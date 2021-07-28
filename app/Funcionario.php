@@ -17,4 +17,8 @@ class Funcionario extends Model
     public function pessoa(){
         return $this->belongsTo(Funcionario::class, 'id_pessoa', 'id');
     }
+
+    public function venda(){
+        return $this->hasMany(Venda::class, 'id_funcionario', 'id');
+    }
 }
