@@ -22,6 +22,10 @@ class CreateUsuariosTable extends Migration
             $table->string('estado');
             $table->timestamps();
         });
+
+        Schema::table('usuarios', function (Blueprint $table) {
+            $table->foreign('id_pessoa')->references('id')->on('pessoas')->onUpdate('cascade');
+        });
     }
 
     /**
