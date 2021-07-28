@@ -15,6 +15,8 @@ class CreateProdutosTable extends Migration
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('id_fabricante')->unsigned()->index();
+            $table->bigInteger('id_fornecedor')->unsigned()->index();
             $table->string('nome');
             $table->string('categoria');
             $table->decimal('valor_compra', 12,2)->nullable();
@@ -25,6 +27,11 @@ class CreateProdutosTable extends Migration
             $table->text('descricao');
             $table->string('estado');
             $table->timestamps();
+        });
+
+        Schema::table('produtos', function (Blueprint $table) {
+            $table->foreign('id_fabricante')->references('id')->on('fabricanates')->onUpdate('cascade');
+            $table->foreign('id_fornecedor')->references('id')->on('fornecedoaares')->onUpdate('cascade');
         });
     }
 
