@@ -14,7 +14,12 @@ class CreateItemVendasTable extends Migration
     public function up()
     {
         Schema::create('item_vendas', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->bigInteger('id_venda')->unsigned()->index();
+            $table->bigInteger('id_produto')->unsigned()->index();
+            $table->bigInteger('quantidade');
+            $table->decimal('preco_unitario', 12,2);
+            $table->string('estado');
             $table->timestamps();
         });
     }
