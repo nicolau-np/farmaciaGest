@@ -20,6 +20,10 @@ class CreateFuncionariosTable extends Migration
             $table->string('estado');
             $table->timestamps();
         });
+
+        Schema::table('funcionarios', function (Blueprint $table) {
+            $table->foreign('id_pessoa')->references('id')->on('pessoas')->onUpdate('cascade');
+        });
     }
 
     /**
