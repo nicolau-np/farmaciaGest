@@ -22,6 +22,11 @@ class CreateItemVendasTable extends Migration
             $table->string('estado');
             $table->timestamps();
         });
+
+        Schema::table('item_vendas', function (Blueprint $table) {
+            $table->foreign('id_venda')->references('id')->on('vendas')->onUpdate('cascade');
+            $table->foreign('id_produto')->references('id')->on('produtos')->onUpdate('cascade');
+        });
     }
 
     /**
