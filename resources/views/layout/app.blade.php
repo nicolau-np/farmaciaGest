@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="@if($type=="login") h-100 @endif" lang="en">
 
 <head>
     <meta charset="utf-8">
