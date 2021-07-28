@@ -14,7 +14,7 @@ class CreateFabricantesTable extends Migration
     public function up()
     {
         Schema::create('fabricantes', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements();
             $table->timestamps();
         });
     }
