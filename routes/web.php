@@ -13,4 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(['prefix'=>"user"], function(){
+    Route::get('/login', "UserController@index");
+});
+
+
 Route::get('/', "HomeController@index");
