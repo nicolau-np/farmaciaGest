@@ -17,7 +17,7 @@ class CreateProdutosTable extends Migration
             $table->bigIncrements('id');
             $table->string('nome');
             $table->string('categoria');
-            $table->decimal('valor_compra', 12,2);
+            $table->decimal('valor_compra', 12,2)->nullable();
             $table->decimal('valor_venda', 12,2);
             $table->bigInteger('quantidade');
             $table->date('data_emissao');
