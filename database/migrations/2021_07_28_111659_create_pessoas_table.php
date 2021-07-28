@@ -19,6 +19,9 @@ class CreatePessoasTable extends Migration
             $table->string('data_nascimento')->nullable();
             $table->string('bairro')->nullable();
             $table->string('genero')->nullable();
+            $table->bigInteger('telefone');
+            $table->string('email')->nullable();
+            $table->text('foto')->nullable();
             $table->timestamps();
         });
     }
