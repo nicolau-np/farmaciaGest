@@ -22,4 +22,8 @@ class Venda extends Model
     public function funcionario(){
         return $this->belongsTo(Funcionario::class, 'id_funcionario', 'id');
     }
+
+    public function item_venda(){
+        return $this->hasMany(ItemVenda::class, 'id_venda', 'id');
+    }
 }
