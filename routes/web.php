@@ -22,3 +22,18 @@ Route::group(['prefix'=>"user"], function(){
 
 
 Route::get('/', "HomeController@index")->middleware('auth')->name('home');
+
+Route::resource('/funcionarios', "FuncionarioController");
+
+Route::resource('/clientes', "ClienteController");
+
+Route::resource('/produtos', "ProdutoController");
+
+Route::resource('/fabricantes', "FabricanteController");
+
+Route::resource('/fornecedores', "FornecedorController");
+
+Route::group(['prefix' =>"/estatistica"], function(){
+    Route::get('/produtos', "ProdutoController@estatistica");
+    Route::get('/funcionarios', "Funcionario@estatistica");
+});
