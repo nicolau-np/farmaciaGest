@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['prefix'=>"user"], function(){
-    Route::get('/login', "UserController@index");
+    Route::get('/login', "UserController@index")->name('login');
+    Route::post('/logar', "UserController@logar")->name('logar');
+    Route::get('/logout', "UserController@logout")->name('logout');
+    
 });
 
 
