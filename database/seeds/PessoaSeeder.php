@@ -14,6 +14,14 @@ class PessoaSeeder extends Seeder
             'telefone' => 946216795,
             'email' => null,
             'foto' => null,
+        ],[
+            'nome' => "Dron HTML",
+            'data_nascimento' => "29-08-1996",
+            'bairro' => "Forte Santa Rita",
+            'genero' => "M",
+            'telefone' => 946216795,
+            'email' => null,
+            'foto' => null,
         ]
 
     ];

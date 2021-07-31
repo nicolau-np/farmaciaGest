@@ -16,6 +16,12 @@ class UserSeeder extends Seeder
                 'password' => Hash::make("olamundo2015"),
                 'acesso' => "admin",
                 'estado' => "on",
+            ],[
+                'id_pessoa' => 2,
+                'email' => "nic340k@hotmail.com",
+                'password' => Hash::make("babaca"),
+                'acesso' => "user",
+                'estado' => "on",
             ]
         ]);
     }
