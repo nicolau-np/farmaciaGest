@@ -24,13 +24,13 @@
                                 {{Form::open(['class'=>"mt-5 mb-5 login-input", 'method'=>"post", 'url'=>"/user/logar"])}}
 
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Email">
+                                        <input type="email" class="form-control" placeholder="Email" name="email" />
                                         @if($errors->has('email'))
                                         <span class="text-danger">{{$errors->first('email')}}</span>
                                          @endif
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Palavra-Passe">
+                                        <input type="password" class="form-control" placeholder="Palavra-Passe" name="password" />
                                          @if($errors->has('password'))
                                         <span class="text-danger">{{$errors->first('password')}}</span>
                                          @endif
