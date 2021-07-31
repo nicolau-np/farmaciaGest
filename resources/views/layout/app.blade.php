@@ -244,7 +244,13 @@
 
                     <li>
                         <a href="/funcionarios" aria-expanded="false">
-                            <i class="fa fa-users menu-icon"></i><span class="nav-text">Funcionários</span>
+                            <i class="fa fa-user menu-icon"></i><span class="nav-text">Funcionário</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/clientes" aria-expanded="false">
+                            <i class="fa fa-group menu-icon"></i><span class="nav-text">Clientes</span>
                         </a>
                     </li>
 
@@ -255,16 +261,15 @@
                     </li>
 
                     <li>
-                        <a href="/fabricantes" aria-expanded="false">
-                            <i class="fa fa-table menu-icon"></i><span class="nav-text">Fabricantes</span>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="fa fa-cogs menu-icon"></i> <span class="nav-text">Configurações</span>
                         </a>
+                        <ul aria-expanded="false">
+                            <li><a href="/fabricantes">Fabricantes</a></li>
+                            <li><a href="/fornecedores">Fornecedores</a></li>
+                        </ul>
                     </li>
 
-                    <li>
-                        <a href="/fornecedores" aria-expanded="false">
-                            <i class="fa fa-list menu-icon"></i><span class="nav-text">Fornecedores</span>
-                        </a>
-                    </li>
 
                     <li class="nav-label">Extras</li>
                     <li>
