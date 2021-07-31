@@ -7,18 +7,37 @@
                     <div class="form-input-content">
                         <div class="card login-form mb-0">
                             <div class="card-body pt-5">
-                                <a class="text-center" href="index.html"> <h4>Rosella</h4></a>
+                                <a class="text-center" href="index.html"> <h4>farmaciaGest</h4></a>
 
-                                <form class="mt-5 mb-5 login-input">
+                                @if (session('error'))
+                                <div class="alert bg-danger" style="color:white" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em> {{__(session('error'))}} <a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
+                                @endif
+
+                                @if (session('success'))
+                                <div class="alert bg-success" style="color:white" role="alert"><em class="fa fa-lg fa-check">&nbsp;</em> {{session('success')}} <a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
+                                @endif
+
+                                @if (session('info'))
+                                <div class="alert bg-info" style="color:white" role="alert"><em class="fa fa-lg fa-check">&nbsp;</em> {{session('info')}} <a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
+                                @endif
+
+                                {{Form::open(['class'=>"mt-5 mb-5 login-input", 'method'=>"post", 'url'=>"/user/logar"])}}
+
                                     <div class="form-group">
                                         <input type="email" class="form-control" placeholder="Email">
+                                        @if($errors->has('email'))
+                                        <span class="text-danger">{{$errors->first('email')}}</span>
+                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password">
+                                        <input type="password" class="form-control" placeholder="Palavra-Passe">
+                                         @if($errors->has('password'))
+                                        <span class="text-danger">{{$errors->first('password')}}</span>
+                                         @endif
                                     </div>
-                                    <button class="btn login-form__btn submit w-100">Sign In</button>
-                                </form>
-                                <p class="mt-5 login-form__footer">Dont have account? <a href="page-register.html" class="text-primary">Sign Up</a> now</p>
+                                    <button class="btn login-form__btn submit w-100">Entrar</button>
+                                {{Form::close()}}
+
                             </div>
                         </div>
                     </div>
