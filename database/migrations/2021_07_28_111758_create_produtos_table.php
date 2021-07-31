@@ -30,8 +30,8 @@ class CreateProdutosTable extends Migration
         });
 
         Schema::table('produtos', function (Blueprint $table) {
-            $table->foreign('id_fabricante')->references('id')->on('fabricanates')->onUpdate('cascade');
-            $table->foreign('id_fornecedor')->references('id')->on('fornecedoaares')->onUpdate('cascade');
+            $table->foreign('id_fabricante')->references('id')->on('fabricantes')->onUpdate('cascade');
+            $table->foreign('id_fornecedor')->references('id')->on('fornecedores')->onUpdate('cascade');
         });
     }
 
