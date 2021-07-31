@@ -37,3 +37,5 @@ Route::group(['prefix' =>"/estatistica"], function(){
     Route::get('/produtos', "ProdutoController@estatistica");
     Route::get('/funcionarios', "Funcionario@estatistica");
 });
+
+Route::get('/sobre', "HomeController@sobre");
