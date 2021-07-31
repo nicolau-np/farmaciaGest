@@ -25,7 +25,7 @@ class HomeController extends Controller
             'menu' => "Sobre",
             'submenu' => null,
             'type' => "sobre",
-            'config' => null,
+            'config' => "aplicacao",
         ];
         return view('sobre', $data);
     }
