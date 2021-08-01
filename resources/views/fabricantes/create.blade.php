@@ -80,9 +80,10 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <button type="submit" class="btn btn-primary"> <i class="fa fa-check"></i> Salvar</button>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary"> <i class="fa fa-check"></i> Salvar</button>
+                            </div>
                         </div>
-
                     </div>
 
                     {{Form::close()}}
