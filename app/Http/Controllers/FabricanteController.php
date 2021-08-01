@@ -89,7 +89,21 @@ class FabricanteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $fabricante = Fabricante::find($id);
+        if(!$fabricante){
+            return back()->with(['info'=>"Não encontrou"]);
+        }
+
+        $data = [
+            'title' => "Fabricantes",
+            'menu' => "Fabricantes",
+            'submenu' => "Editar",
+            'type' => "fabricantes",
+            'config' => "configuracoes",
+            'getFabricante'=>$fabricante,
+        ];
+        return view('fabricantes.edit', $data);
+
     }
 
     /**
@@ -101,7 +115,7 @@ class FabricanteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
