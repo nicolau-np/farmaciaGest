@@ -56,9 +56,10 @@ class FuncionarioController extends Controller
             [
                 'nome' => ['required', 'string', 'min:5', 'max:255',],
                 'telefone' => ['required', 'integer', 'min:1'],
+                'data_nascimento' => ['required', 'date'],
                 'genero' => ['required', 'string', 'min:1', 'max:255'],
 
-                'cargo'=>['required','string', 'min:1', 'max:255'],
+                'cargo' => ['required', 'string', 'min:1', 'max:255'],
                 'estado' => ['required', 'string', 'min:1', 'max:3'],
             ]
         );
@@ -72,7 +73,7 @@ class FuncionarioController extends Controller
             'email' => $request->email,
             'foto' => null,
         ];
-        
+
         $data['funcionario'] = [
             'id_pessoa' => null,
             'cargo' => $request->cargo,
@@ -147,26 +148,48 @@ class FuncionarioController extends Controller
 
         $request->validate(
             [
-                'nome' => ['required', 'string', 'min:5', 'max:255'],
+                'nome' => ['required', 'string', 'min:5', 'max:255',],
+                'telefone' => ['required', 'integer', 'min:1'],
+                'data_nascimento' => ['required', 'date'],
+                'genero' => ['required', 'string', 'min:1', 'max:255'],
+
+                'cargo' => ['required', 'string', 'min:1', 'max:255'],
                 'estado' => ['required', 'string', 'min:1', 'max:3'],
             ]
         );
 
-        if ($request->nome != $funcionario->nome) {
-            $request->validate([
-                'nome' => ['required', 'string', 'min:5', 'max:255', 'unique:Funcionarios,nome'],
-            ]);
-        }
-
-        $data = [
+        $data['pessoa'] = [
             'nome' => $request->nome,
-            'email' => $request->email,
+            'data_nascimento' => $request->data_nascimento,
+            'bairro' => $request->bairro,
+            'genero' => $request->genero,
             'telefone' => $request->telefone,
-            'endereco' => $request->endereco,
+            'email' => $request->email,
+            'foto' => $funcionario->pessoa->foto,
+        ];
+
+        $data['funcionario'] = [
+            'cargo' => $request->cargo,
             'estado' => $request->estado,
         ];
-        if (Funcionario::find($id)->update($data)) {
-            return back()->with(['success' => "Feito com sucesso"]);
+
+        if ($request->hasFile('foto') && $request->foto->isValid()) {
+            $request->validate([
+                'foto' => ['required', 'mimes:jpg,jpeg,png,JPG,JPEG,PNG', 'max:5000']
+            ]);
+            if ($funcionario->pessoa->foto != "" && file_exists($funcionario->pessoa->foto)) {
+                unlink($funcionario->pessoa->foto);
+            }
+            $path = $request->file('foto')->store('img_funcionarios');
+            $data['pessoa']['foto'] = $path;
+        }
+
+        $pessoa = Pessoa::find($funcionario->pessoa->id)->update($data['pessoa']);
+        if ($pessoa) {
+
+            if (Funcionario::find($funcionario->id)->update($data)) {
+                return back()->with(['success' => "Feito com sucesso"]);
+            }
         }
     }
 
