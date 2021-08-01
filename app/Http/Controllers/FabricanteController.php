@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Fabricante;
 use Illuminate\Http\Request;
 
 class FabricanteController extends Controller
@@ -13,13 +14,14 @@ class FabricanteController extends Controller
      */
     public function index()
     {
-        $fabricantes
+        $fabricantes = Fabricante::paginate(8);
         $data = [
             'title' => "Fabricantes",
             'menu' => "Fabricantes",
             'submenu' => "Listar",
             'type' => "fabricantes",
             'config' => "configuracoes",
+            'getFabricantes'=>$fabricantes,
         ];
         return view('fabricantes.list', $data);
     }
