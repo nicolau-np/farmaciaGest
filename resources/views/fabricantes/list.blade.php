@@ -17,7 +17,7 @@
             <div class="card-body">
                 <div class="card-title">
                     <h4 class="submenu">{{$submenu}}</h4>
-                    <h4 class="link"><a href="#" class="btn btn-success btn-sm"><i class="fa fa-add"></i> Novo</a></h4>
+                    <h4 class="link"><a href="/fabricantes/create/" class="btn btn-success btn-sm"><i class="fa fa-add"></i> Novo</a></h4>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered">
