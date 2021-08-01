@@ -26,8 +26,8 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                {{Form::label('nome', "Nome do fabricante")}} <span class="text-danger">*</span>
-                                {{Form::text('nome', null, ['class'=>"form-control", 'placeholder'=>"Nome do fabricante"])}}
+                                {{Form::label('nome', "Nome do fornecedor")}} <span class="text-danger">*</span>
+                                {{Form::text('nome', null, ['class'=>"form-control", 'placeholder'=>"Nome do fornecedor"])}}
                                 @if($errors->has('nome'))
                                 <span class="text-danger">{{$errors->first('nome')}}</span>
                                 @endif
