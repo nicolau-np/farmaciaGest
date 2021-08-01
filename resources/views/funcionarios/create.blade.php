@@ -26,8 +26,8 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                {{Form::label('nome', "Nome do fornecedor")}} <span class="text-danger">*</span>
-                                {{Form::text('nome', null, ['class'=>"form-control", 'placeholder'=>"Nome do fornecedor"])}}
+                                {{Form::label('nome', "Nome do funcionario")}} <span class="text-danger">*</span>
+                                {{Form::text('nome', null, ['class'=>"form-control", 'placeholder'=>"Nome do funcionario"])}}
                                 @if($errors->has('nome'))
                                 <span class="text-danger">{{$errors->first('nome')}}</span>
                                 @endif
@@ -36,23 +36,57 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                {{Form::label('endereco', "Endereço")}}
-                                {{Form::text('endereco', null, ['class'=>"form-control", 'placeholder'=>"Endereço"])}}
-                                @if($errors->has('endereco'))
-                                <span class="text-danger">{{$errors->first('endereco')}}</span>
+                                {{Form::label('genero', "Gênero")}} <span class="text-danger">*</span>
+                                {{Form::select('genero',  [
+                                    'M'=>"M",
+                                    'F'=>"F",
+                                ], null, ['class'=>"form-control", 'placeholder'=>"Gênero"])}}
+                                @if($errors->has('genero'))
+                                <span class="text-danger">{{$errors->first('genero')}}</span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                {{Form::label('telefone', "Telefone")}}
+                                {{Form::label('data_nascimento', "Data de Nascimento")}} <span class="text-danger">*</span>
+                                {{Form::date('data_nascimento', null, ['class'=>"form-control", 'placeholder'=>"Data de Nascimento"])}}
+                                @if($errors->has('data_nascimento'))
+                                <span class="text-danger">{{$errors->first('data_nascimento')}}</span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{Form::label('foto', "Foto")}}
+                                {{Form::file('foto', null, ['class'=>"form-control", 'placeholder'=>"Foto"])}}
+                                @if($errors->has('foto'))
+                                <span class="text-danger">{{$errors->first('foto')}}</span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{Form::label('telefone', "Telefone")}} <span class="text-danger">*</span>
                                 {{Form::number('telefone', null, ['class'=>"form-control", 'placeholder'=>"Telefone"])}}
                                 @if($errors->has('telefone'))
                                 <span class="text-danger">{{$errors->first('telefone')}}</span>
                                 @endif
                             </div>
                         </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{Form::label('bairro', "Endereço")}}
+                                {{Form::text('bairro', null, ['class'=>"form-control", 'placeholder'=>"Endereço"])}}
+                                @if($errors->has('bairro'))
+                                <span class="text-danger">{{$errors->first('bairro')}}</span>
+                                @endif
+                            </div>
+                        </div>
+
 
                         <div class="col-md-4">
                             <div class="form-group">
@@ -63,6 +97,8 @@
                                 @endif
                             </div>
                         </div>
+
+
 
                         <div class="col-md-4">
                             <div class="form-group">
