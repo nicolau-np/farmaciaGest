@@ -55,7 +55,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-            <h4 class="card-title">Seja Bem vindo {{Auth::user()->pessoa}}</h4>
+            <h4 class="card-title">Seja Bem vindo <a href="#">{{Auth::user()->pessoa->nome}}</a></h4>
                 <div class="bootstrap-carousel">
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
