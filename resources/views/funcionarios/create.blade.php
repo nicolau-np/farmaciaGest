@@ -57,7 +57,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <div class="form-group">
                                 {{Form::label('foto', "Foto")}}
                                 {{Form::file('foto', null, ['class'=>"form-control", 'placeholder'=>"Foto"])}}
@@ -67,7 +67,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 {{Form::label('telefone', "Telefone")}} <span class="text-danger">*</span>
                                 {{Form::number('telefone', null, ['class'=>"form-control", 'placeholder'=>"Telefone"])}}
