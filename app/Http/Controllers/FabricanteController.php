@@ -36,7 +36,7 @@ class FabricanteController extends Controller
         $data = [
             'title' => "Fabricantes",
             'menu' => "Fabricantes",
-            'submenu' => "Listar",
+            'submenu' => "Novo",
             'type' => "fabricantes",
             'config' => "configuracoes",
         ];
