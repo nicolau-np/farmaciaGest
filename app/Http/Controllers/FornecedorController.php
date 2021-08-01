@@ -129,7 +129,7 @@ class FornecedorController extends Controller
 
         if($request->nome != $fornecedor->nome){
             $request->validate([
-                'nome' => ['required', 'string', 'min:5', 'max:255', 'unique:Fornecedores,nome'],
+                'nome' => ['required', 'string', 'min:5', 'max:255', 'unique:fornecedors,nome'],
             ]);
         }
 
