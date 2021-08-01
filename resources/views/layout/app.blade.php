@@ -329,7 +329,7 @@
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright &copy; {{date('Y')}} <a href="#">FarmaciaGest </a></p>
+                <p>Copyright &copy; {{date('Y')}} <a href="#">farmaciaGest </a></p>
             </div>
         </div>
         <!--**********************************
