@@ -13,7 +13,7 @@ class FabricanteController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
