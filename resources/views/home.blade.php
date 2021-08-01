@@ -53,41 +53,27 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body pb-0 d-flex justify-content-between">
-                        <div>
-                            <h4 class="mb-1">Product Sales</h4>
-                            <p>Total Earnings of the Month</p>
-                            <h3 class="m-0">$ 12,555</h3>
-                        </div>
-                        <div>
-                            <ul>
-                                <li class="d-inline-block mr-3"><a class="text-dark" href="#">Day</a></li>
-                                <li class="d-inline-block mr-3"><a class="text-dark" href="#">Week</a></li>
-                                <li class="d-inline-block"><a class="text-dark" href="#">Month</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="chart-wrapper">
-                        <canvas id="chart_widget_2"></canvas>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <div class="w-100 mr-2">
-                                <h6>Pixel 2</h6>
-                                <div class="progress" style="height: 6px">
-                                    <div class="progress-bar bg-danger" style="width: 40%"></div>
-                                </div>
+        <div class="card">
+            <div class="card-body">
+            <h4 class="card-title">Seja Bem vindo {{Auth::user()->pessoa}}</h4>
+                <div class="bootstrap-carousel">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class=""></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1" class=""></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2" class="active"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="{{asset('assets/images/big/img5.jpg')}}" alt="First slide">
                             </div>
-                            <div class="ml-2 w-100">
-                                <h6>iPhone X</h6>
-                                <div class="progress" style="height: 6px">
-                                    <div class="progress-bar bg-primary" style="width: 80%"></div>
-                                </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="{{asset('assets/images/big/img6.jpg')}}" alt="Second slide">
                             </div>
-                        </div>
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="{{asset('assets/images/big/img5.jpg')}}" alt="Third slide">
+                            </div>
+                        </div><a class="carousel-control-prev" href="#carouselExampleIndicators" data-slide="prev"><span class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span> </a><a class="carousel-control-next" href="#carouselExampleIndicators" data-slide="next"><span class="carousel-control-next-icon"></span> <span class="sr-only">Next</span></a>
                     </div>
                 </div>
             </div>
