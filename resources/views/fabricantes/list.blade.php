@@ -22,7 +22,7 @@
                     @if (session('info'))
                     <div class="alert bg-info" style="color:white" role="alert"><em class="fa fa-lg fa-check">&nbsp;</em> {{session('info')}} <a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
                     @endif
-                    
+
                     <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
@@ -51,9 +51,11 @@
                                 @endif
                             </td>
                             <td>
+                                {{Form::open(['url'=>"/fabricantes/{$fabricantes->id}", 'method'=>"delete"])}}
                                 <a href="/fabricantes/{{$fabricantes->id}}/edit" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Editar</a>
                                 &nbsp;
-                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Eliminar</a>
+                                <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Eliminar</button>
+                                {{Form::close()}}
                             </td>
                             </tr>
                             @endforeach
