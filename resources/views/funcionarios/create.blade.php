@@ -98,7 +98,20 @@
                             </div>
                         </div>
 
-
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{Form::label('cargo', "Cargo")}} <span class="text-danger">*</span>
+                                {{Form::select('cargo',  [
+                                    'Recepção'=>"Recepção",
+                                    'Atendimento'=>"Atendimento",
+                                    'Contabilista'=>"Contabilista",
+                                    'Gestor de Marketing'=>"Gestor de Marketing",
+                                ], null, ['class'=>"form-control", 'placeholder'=>"Cargo"])}}
+                                @if($errors->has('cargo'))
+                                <span class="text-danger">{{$errors->first('cargo')}}</span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="col-md-4">
                             <div class="form-group">
