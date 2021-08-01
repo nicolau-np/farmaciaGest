@@ -22,12 +22,12 @@
                     <div class="alert bg-info" style="color:white" role="alert"><em class="fa fa-lg fa-check">&nbsp;</em> {{session('info')}} <a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
                     @endif
 
-                    {{Form::open(['url' =>"/fabricantes/", 'method'=>"post", 'file'=>"true"])}}
+                    {{Form::open(['url' =>"/fabricantes/{$getFabricante->id}", 'method'=>"put", 'file'=>"true"])}}
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 {{Form::label('nome', "Nome do fabricante")}} <span class="text-danger">*</span>
-                                {{Form::text('nome', null, ['class'=>"form-control", 'placeholder'=>"Nome do fabricante"])}}
+                                {{Form::text('nome', {{$getFabricante->nome}}, ['class'=>"form-control", 'placeholder'=>"Nome do fabricante"])}}
                                 @if($errors->has('nome'))
                                 <span class="text-danger">{{$errors->first('nome')}}</span>
                                 @endif
@@ -37,7 +37,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 {{Form::label('endereco', "Endereço")}}
-                                {{Form::text('endereco', null, ['class'=>"form-control", 'placeholder'=>"Endereço"])}}
+                                {{Form::text('endereco', {{$getFabricante->endereco}}, ['class'=>"form-control", 'placeholder'=>"Endereço"])}}
                                 @if($errors->has('endereco'))
                                 <span class="text-danger">{{$errors->first('endereco')}}</span>
                                 @endif
@@ -47,7 +47,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 {{Form::label('telefone', "Telefone")}}
-                                {{Form::number('telefone', null, ['class'=>"form-control", 'placeholder'=>"Telefone"])}}
+                                {{Form::number('telefone', {{$getFabricante->telefone}}, ['class'=>"form-control", 'placeholder'=>"Telefone"])}}
                                 @if($errors->has('telefone'))
                                 <span class="text-danger">{{$errors->first('telefone')}}</span>
                                 @endif
@@ -57,7 +57,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 {{Form::label('email', "E-mail")}}
-                                {{Form::email('email', null, ['class'=>"form-control", 'placeholder'=>"E-mail"])}}
+                                {{Form::email('email', {{$getFabricante->email}}, ['class'=>"form-control", 'placeholder'=>"E-mail"])}}
                                 @if($errors->has('email'))
                                 <span class="text-danger">{{$errors->first('email')}}</span>
                                 @endif
@@ -70,7 +70,7 @@
                                 {{Form::select('estado',  [
                                     'on'=>"on",
                                     'off'=>"off",
-                                ], null, ['class'=>"form-control", 'placeholder'=>"Estado"])}}
+                                ], {{$getFabricante->estado}}, ['class'=>"form-control", 'placeholder'=>"Estado"])}}
                                 @if($errors->has('estado'))
                                 <span class="text-danger">{{$errors->first('estado')}}</span>
                                 @endif
