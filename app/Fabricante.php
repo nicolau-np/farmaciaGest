@@ -20,5 +20,5 @@ class Fabricante extends Model
     {
         return $this->hasMany(Produto::class, 'id_fabricante', 'id');
     }
-    
+
 }

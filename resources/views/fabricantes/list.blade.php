@@ -1,16 +1,6 @@
 @extends('layout.app')
 @section('content')
-<style>
-    .card-title{
-        display:block;
-    }
-    .submenu{
-        float: left;
-    }
-    .link{
-        float: right;
-    }
-</style>
+
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -19,6 +9,7 @@
                     <h4 class="submenu">{{$submenu}}</h4>
                     <h4 class="link"><a href="/fabricantes/create/" class="btn btn-success btn-sm"><i class="fa fa-add"></i> Novo</a></h4>
                 </div>
+                
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered">
                         <thead>
