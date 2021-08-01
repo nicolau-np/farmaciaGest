@@ -53,7 +53,7 @@ class FornecedorController extends Controller
     {
         $request->validate(
             [
-                'nome' => ['required', 'string', 'min:5', 'max:255', 'unique:Fornecedores,nome'],
+                'nome' => ['required', 'string', 'min:5', 'max:255', 'unique:fornecedors,nome'],
                 'estado' => ['required', 'string', 'min:1', 'max:3'],
             ]
         );
