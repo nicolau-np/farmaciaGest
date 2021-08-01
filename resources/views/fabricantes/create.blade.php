@@ -22,7 +22,7 @@
                     <div class="alert bg-info" style="color:white" role="alert"><em class="fa fa-lg fa-check">&nbsp;</em> {{session('info')}} <a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
                     @endif
 
-                    {{Form::open(['url' =>"/funcionarios/store", 'method'=>"post", 'file'=>"true"])}}
+                    {{Form::open(['url' =>"/funcionarios/", 'method'=>"post", 'file'=>"true"])}}
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
