@@ -9,7 +9,7 @@
                     <h4 class="submenu">{{$submenu}}</h4>
                     <h4 class="link"><a href="/fabricantes/create/" class="btn btn-success btn-sm"><i class="fa fa-add"></i> Novo</a></h4>
                 </div>
-                
+
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered">
                         <thead>
@@ -39,7 +39,9 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Editar</a>
+                                <a href="/fabricantes/{{$fabricantes->id}}/edit" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Editar</a>
+                                &nbsp;
+                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Eliminar</a>
                             </td>
                             </tr>
                             @endforeach
