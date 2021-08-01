@@ -28,8 +28,61 @@
                             <div class="form-group">
                                 {{Form::label('nome', "Nome do fabricante")}} <span class="text-danger">*</span>
                                 {{Form::text('nome', null, ['class'=>"form-control", 'placeholder'=>"Nome do fabricante"])}}
+                                @if($errors->has('nome'))
+                                <span class="text-danger">{{$errors->first('nome')}}</span>
+                                @endif
                             </div>
                         </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{Form::label('endereco', "Endereço")}}
+                                {{Form::text('endereco', null, ['class'=>"form-control", 'placeholder'=>"Endereço"])}}
+                                @if($errors->has('endereco'))
+                                <span class="text-danger">{{$errors->first('endereco')}}</span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{Form::label('telefone', "Telefone")}}
+                                {{Form::number('telefone', null, ['class'=>"form-control", 'placeholder'=>"Telefone"])}}
+                                @if($errors->has('telefone'))
+                                <span class="text-danger">{{$errors->first('telefone')}}</span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{Form::label('email', "E-mail")}}
+                                {{Form::email('email', null, ['class'=>"form-control", 'placeholder'=>"E-mail"])}}
+                                @if($errors->has('email'))
+                                <span class="text-danger">{{$errors->first('email')}}</span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{Form::label('estado', "Estado")}} <span class="text-danger">*</span>
+                                {{Form::select('estado',  [
+                                    'on'=>"on",
+                                    'off'=>"off",
+                                ], null, ['class'=>"form-control", 'placeholder'=>"Estado"])}}
+                                @if($errors->has('estado'))
+                                <span class="text-danger">{{$errors->first('estado')}}</span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary"> <i class="fa fa-check"></i> Salvar</button>
+                        </div>
+
                     </div>
 
                     {{Form::close()}}

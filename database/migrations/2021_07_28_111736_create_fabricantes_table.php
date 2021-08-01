@@ -17,8 +17,8 @@ class CreateFabricantesTable extends Migration
             $table->bigIncrements('id');
             $table->string('nome')->unique();
             $table->string('email')->nullable()->unique();
-            $table->bigInteger('telefone');
-            $table->string('endereco');
+            $table->bigInteger('telefone')->nullable();
+            $table->string('endereco')->nullable();
             $table->string('estado');
             $table->timestamps();
         });
