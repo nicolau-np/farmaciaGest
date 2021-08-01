@@ -23,7 +23,14 @@
                     @endif
 
                     {{Form::open(['url' =>"/funcionarios/store", 'method'=>"post", 'file'=>"true"])}}
-
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{Form::label('nome', "Nome do fabricante")}} <span class="text-danger">*</span>
+                                {{Form::text('nome', null, ['class'=>"form-control", 'placeholder'=>"Nome do fabricante"])}}
+                            </div>
+                        </div>
+                    </div>
 
                     {{Form::close()}}
                 </div>
