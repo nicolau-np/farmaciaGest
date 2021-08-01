@@ -122,7 +122,7 @@ class FabricanteController extends Controller
 
         $request->validate(
             [
-                'nome' => ['required', 'string', 'min:5', 'max:255',],
+                'nome' => ['required', 'string', 'min:5', 'max:255'],
                 'estado' => ['required', 'string', 'min:1', 'max:3'],
             ]
         );
@@ -153,6 +153,17 @@ class FabricanteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $fabricante = Fabricante::find($id);
+        if(!$fabricante){
+            return back()->with(['info'=>"Não encontrou"]);
+        }
+
+        $data = [
+            'estado'=>"delete"
+        ];
+
+        if(Fabricante::find($id)->update($data)){
+            return back()->with(['info'=>"Eliminado com sucesso"]);
+        }
     }
 }
