@@ -6,7 +6,7 @@
             <div class="card-body">
                 <div class="card-title">
                     <h4 class="submenu">{{$submenu}}</h4>
-                    <h4 class="link"><a href="/fabricantes/" class="btn btn-warning btn-sm"><i class="fa fa-search"></i> Listar</a></h4>
+                    <h4 class="link"><a href="/fornecedores/" class="btn btn-warning btn-sm"><i class="fa fa-search"></i> Listar</a></h4>
                 </div>
                 <br/>
                 <div class="form">
@@ -22,7 +22,7 @@
                     <div class="alert bg-info" style="color:white" role="alert"><em class="fa fa-lg fa-check">&nbsp;</em> {{session('info')}} <a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
                     @endif
 
-                    {{Form::open(['url' =>"/fabricantes/", 'method'=>"post", 'file'=>"true"])}}
+                    {{Form::open(['url' =>"/fornecedores/", 'method'=>"post", 'file'=>"true"])}}
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
