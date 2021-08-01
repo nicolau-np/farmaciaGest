@@ -6,7 +6,7 @@
             <div class="card-body">
                 <div class="card-title">
                     <h4 class="submenu">{{$submenu}}</h4>
-                    <h4 class="link"><a href="/fabricantes/" class="btn btn-success btn-sm"><i class="fa fa-search"></i> Listar</a></h4>
+                    <h4 class="link"><a href="/fabricantes/" class="btn btn-warning btn-sm"><i class="fa fa-search"></i> Listar</a></h4>
                 </div>
                 <br/>
                 <div class="form">
