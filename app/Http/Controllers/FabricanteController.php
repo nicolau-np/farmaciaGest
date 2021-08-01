@@ -51,10 +51,12 @@ class FabricanteController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nome' => ['required', 'string', 'min:5', 'max:255', 'unique:fabricantes,nome'],
-            'estado' => ['required', 'string', 'min:1', 'max:3'],
-        ]);
+        $request->validate(
+            [
+                'nome' => ['required', 'string', 'min:5', 'max:255', 'unique:fabricantes,nome'],
+                'estado' => ['required', 'string', 'min:1', 'max:3'],
+            ]
+        );
 
         $data = [
             'nome'=>$request->nome,
