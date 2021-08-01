@@ -23,7 +23,7 @@ class FornecedorController extends Controller
             'config' => "configuracoes",
             'getFornecedores' => $fornecedores,
         ];
-        return view('Fornecedores.list', $data);
+        return view('fornecedores.list', $data);
     }
 
     /**
@@ -40,7 +40,7 @@ class FornecedorController extends Controller
             'type' => "fornecedores",
             'config' => "configuracoes",
         ];
-        return view('Fornecedores.create', $data);
+        return view('fornecedores.create', $data);
     }
 
     /**
@@ -89,8 +89,8 @@ class FornecedorController extends Controller
      */
     public function edit($id)
     {
-        $Fornecedor = Fornecedor::find($id);
-        if(!$Fornecedor){
+        $fornecedor = Fornecedor::find($id);
+        if(!$fornecedor){
             return back()->with(['info'=>"Não encontrou"]);
         }
 
@@ -100,9 +100,9 @@ class FornecedorController extends Controller
             'submenu' => "Editar",
             'type' => "Fornecedores",
             'config' => "configuracoes",
-            'getFornecedor'=>$Fornecedor,
+            'getFornecedor'=>$fornecedor,
         ];
-        return view('Fornecedores.edit', $data);
+        return view('fornecedores.edit', $data);
 
     }
 
@@ -115,8 +115,8 @@ class FornecedorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $Fornecedor = Fornecedor::find($id);
-        if(!$Fornecedor){
+        $fornecedor = Fornecedor::find($id);
+        if(!$fornecedor){
             return back()->with(['info'=>"Não encontrou"]);
         }
 
@@ -127,7 +127,7 @@ class FornecedorController extends Controller
             ]
         );
 
-        if($request->nome != $Fornecedor->nome){
+        if($request->nome != $fornecedor->nome){
             $request->validate([
                 'nome' => ['required', 'string', 'min:5', 'max:255', 'unique:Fornecedores,nome'],
             ]);
@@ -153,8 +153,8 @@ class FornecedorController extends Controller
      */
     public function destroy($id)
     {
-        $Fornecedor = Fornecedor::find($id);
-        if(!$Fornecedor){
+        $fornecedor = Fornecedor::find($id);
+        if(!$fornecedor){
             return back()->with(['info'=>"Não encontrou"]);
         }
 
