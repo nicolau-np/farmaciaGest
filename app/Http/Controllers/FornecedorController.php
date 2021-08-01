@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Fornecedor;
 use Illuminate\Http\Request;
 
 class FornecedorController extends Controller
@@ -13,7 +14,16 @@ class FornecedorController extends Controller
      */
     public function index()
     {
-        //
+        $fornecedores = Fornecedor::where('estado', '!=', "delete")->paginate(8);
+        $data = [
+            'title' => "Fornecedores",
+            'menu' => "Fornecedores",
+            'submenu' => "Listar",
+            'type' => "fornecedores",
+            'config' => "configuracoes",
+            'getFornecedores' => $fornecedores,
+        ];
+        return view('Fornecedores.list', $data);
     }
 
     /**
@@ -23,7 +33,14 @@ class FornecedorController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'title' => "Fornecedores",
+            'menu' => "Fornecedores",
+            'submenu' => "Novo",
+            'type' => "fornecedores",
+            'config' => "configuracoes",
+        ];
+        return view('Fornecedores.create', $data);
     }
 
     /**
@@ -34,7 +51,23 @@ class FornecedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'nome' => ['required', 'string', 'min:5', 'max:255', 'unique:Fornecedores,nome'],
+                'estado' => ['required', 'string', 'min:1', 'max:3'],
+            ]
+        );
+
+        $data = [
+            'nome'=>$request->nome,
+            'email'=>$request->email,
+            'telefone'=>$request->telefone,
+            'endereco'=>$request->endereco,
+            'estado'=>$request->estado,
+        ];
+        if(Fornecedor::create($data)){
+            return back()->with(['success'=>"Feito com sucesso"]);
+        }
     }
 
     /**
@@ -56,7 +89,21 @@ class FornecedorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Fornecedor = Fornecedor::find($id);
+        if(!$Fornecedor){
+            return back()->with(['info'=>"Não encontrou"]);
+        }
+
+        $data = [
+            'title' => "Fornecedores",
+            'menu' => "Fornecedores",
+            'submenu' => "Editar",
+            'type' => "Fornecedores",
+            'config' => "configuracoes",
+            'getFornecedor'=>$Fornecedor,
+        ];
+        return view('Fornecedores.edit', $data);
+
     }
 
     /**
@@ -68,7 +115,34 @@ class FornecedorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $Fornecedor = Fornecedor::find($id);
+        if(!$Fornecedor){
+            return back()->with(['info'=>"Não encontrou"]);
+        }
+
+        $request->validate(
+            [
+                'nome' => ['required', 'string', 'min:5', 'max:255'],
+                'estado' => ['required', 'string', 'min:1', 'max:3'],
+            ]
+        );
+
+        if($request->nome != $Fornecedor->nome){
+            $request->validate([
+                'nome' => ['required', 'string', 'min:5', 'max:255', 'unique:Fornecedores,nome'],
+            ]);
+        }
+
+        $data = [
+            'nome'=>$request->nome,
+            'email'=>$request->email,
+            'telefone'=>$request->telefone,
+            'endereco'=>$request->endereco,
+            'estado'=>$request->estado,
+        ];
+        if(Fornecedor::find($id)->update($data)){
+            return back()->with(['success'=>"Feito com sucesso"]);
+        }
     }
 
     /**
@@ -79,6 +153,17 @@ class FornecedorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Fornecedor = Fornecedor::find($id);
+        if(!$Fornecedor){
+            return back()->with(['info'=>"Não encontrou"]);
+        }
+
+        $data = [
+            'estado'=>"delete"
+        ];
+
+        if(Fornecedor::find($id)->update($data)){
+            return back()->with(['info'=>"Eliminado com sucesso"]);
+        }
     }
 }
