@@ -13,7 +13,15 @@ class FabricanteController extends Controller
      */
     public function index()
     {
-        
+        $fabricantes
+        $data = [
+            'title' => "Fabricantes",
+            'menu' => "Fabricantes",
+            'submenu' => "Listar",
+            'type' => "fabricantes",
+            'config' => "configuracoes",
+        ];
+        return view('fabricantes.list', $data);
     }
 
     /**
