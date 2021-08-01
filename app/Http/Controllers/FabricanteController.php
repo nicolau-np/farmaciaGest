@@ -14,7 +14,7 @@ class FabricanteController extends Controller
      */
     public function index()
     {
-        $fabricantes = Fabricante::paginate(8);
+        $fabricantes = Fabricante::where('estado', '!=', "delete")->paginate(8);
         $data = [
             'title' => "Fabricantes",
             'menu' => "Fabricantes",
@@ -115,7 +115,34 @@ class FabricanteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $fabricante = Fabricante::find($id);
+        if(!$fabricante){
+            return back()->with(['info'=>"Não encontrou"]);
+        }
+
+        $request->validate(
+            [
+                'nome' => ['required', 'string', 'min:5', 'max:255',],
+                'estado' => ['required', 'string', 'min:1', 'max:3'],
+            ]
+        );
+
+        if($request->nome != $fabricante->nome){
+            $request->validate([
+                'nome' => ['required', 'string', 'min:5', 'max:255', 'unique:fabricantes,nome'],
+            ]);
+        }
+
+        $data = [
+            'nome'=>$request->nome,
+            'email'=>$request->email,
+            'telefone'=>$request->telefone,
+            'endereco'=>$request->endereco,
+            'estado'=>$request->estado,
+        ];
+        if(Fabricante::find($id)->update($data)){
+            return back()->with(['success'=>"Feito com sucesso"]);
+        }
     }
 
     /**
