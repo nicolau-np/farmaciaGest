@@ -21,7 +21,7 @@ class FabricanteController extends Controller
             'submenu' => "Listar",
             'type' => "fabricantes",
             'config' => "configuracoes",
-            'getFabricantes'=>$fabricantes,
+            'getFabricantes' => $fabricantes,
         ];
         return view('fabricantes.list', $data);
     }
@@ -51,7 +51,21 @@ class FabricanteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nome' => ['required', 'string', 'min:5', 'max:255', 'unique:fabricantes,nome'],
+            'estado' => ['required', 'string', 'min:1', 'max:3'],
+        ]);
+
+        $data = [
+            'nome'=>$request->nome,
+            'email'=>$request->email,
+            'telefone'=>$request->telefone,
+            'endereco'=>$request->endereco,
+            'estado'=>$request->estado,
+        ];
+        if(Fabricante::create($data)){
+            return back()->with(['success'=>"Feito com sucesso"]);
+        }
     }
 
     /**
