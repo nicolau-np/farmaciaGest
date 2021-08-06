@@ -120,7 +120,40 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $produtos = Produto::find($id);
+        if(!$produtos){
+            return back()->with(['info'=>"Não encontrou"]);
+        }
+        $request->validate([
+            'nome' => ['required', 'string', 'min:4', 'max:255'],
+            'fabricante' => ['required', 'integer', 'min:1'],
+            'fornecedor' => ['required', 'integer', 'min:1'],
+            'categoria' => ['required', 'string'],
+            'preco' => ['required', 'numeric', 'min:1'],
+            'quantidade' => ['required', 'integer', 'min:1'],
+            'data_emissao' => ['required', 'date'],
+            'data_caducidade' => ['required', 'date'],
+            'descricao' => ['required', 'string', 'min:1', 'max:255'],
+            'estado' => ['required', 'string', 'min:2'],
+        ]);
+
+        $data = [
+            'id_fabricante'=>$request->fabricante,
+            'id_fornecedor'=>$request->fornecedor,
+            'nome'=>$request->nome,
+            'categoria'=>$request->categoria,
+            'valor_compra'=>null,
+            'valor_venda'=>$request->preco,
+            'quantidade'=>$request->quantidade,
+            'data_emissao'=>$request->data_emissao,
+            'data_caducidade'=>$request->data_caducidade,
+            'descricao'=>$request->descricao,
+            'estado'=>$request->estado,
+        ];
+
+        if(Produto::find($id)->update($data)){
+            return back()->with(['success'=>"Feito com sucesso"]);
+        }
     }
 
     /**
