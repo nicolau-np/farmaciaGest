@@ -69,6 +69,24 @@ class ProdutoController extends Controller
             'descricao' => ['required', 'string', 'min:1', 'max:255'],
             'estado' => ['required', 'string', 'min:2'],
         ]);
+
+        $data = [
+            'id_fabricante'=>$request->fabricante,
+            'id_fornecedor'=>$request->fornecedor,
+            'nome'=>$request->nome,
+            'categoria'=>$request->categoria,
+            'valor_compra'=>null,
+            'valor_venda'=>$request->preco,
+            'quantidade'=>$request->quantidade,
+            'data_emissao'=>$request->data_emissao,
+            'data_caducidade'=>$request->data_caducidade,
+            'descricao'=>$request->descricao,
+            'estado'=>$request->estado,
+        ];
+
+        if(Produto::create($data)){
+            return back()->with(['success'=>"Feito com sucesso"]);
+        }
     }
 
     /**
