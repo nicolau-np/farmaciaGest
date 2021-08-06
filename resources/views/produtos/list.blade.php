@@ -43,13 +43,15 @@
                             @foreach ($getProdutos as $produtos)
                             <tr>
                             <th>{{$loop->iteration}}</th>
-                            <td>{{$produtos->pessoa->nome}}</td>
-                            <td>{{$produtos->pessoa->genero}}</td>
-                            <td>{{date('d-m-Y', strtotime($produtos->pessoa->data_nascimento))}}</td>
-                            <td>{{$produtos->pessoa->bairro}}</td>
-                            <td>{{$produtos->pessoa->telefone}}</td>
-                            <td>{{$produtos->pessoa->email}}</td>
-                            <td>{{$produtos->cargo}}</td>
+                            <td>{{$produtos->nome}}</td>
+                            <td>{{$produtos->fabricante->nome}}</td>
+                            <td>{{$produtos->fornecedor->nome}}</td>
+                            <td>{{$produtos->categoria}}</td>
+                            <td>{{$produtos->preco}}</td>
+                            <td>{{$produtos->quantidade}}</td>
+                            <td>{{date('d-m-Y', strtotime($produtos->data_emissao))}}</td>
+                            <td>{{date('d-m-Y', strtotime($produtos->data_caducidade))}}</td>
+                            <td>{{$produtos->descricao}}</td>
                             <td>
                                 @if($produtos->estado == "on")
                                 <span class="badge badge-success px-2">{{$produtos->estado}}</span>
