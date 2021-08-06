@@ -60,7 +60,7 @@
                                 {{Form::open(['url'=>"/funcionarios/{$funcionarios->id}", 'method'=>"delete"])}}
                                 <a href="/funcionarios/{{$funcionarios->id}}/edit" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Editar</a>
                                 &nbsp;
-                                <a href="/funcionarios/{{$funcionarios->id}}/edit" class="btn btn-success btn-sm"><i class="fa fa-key"></i> user</a>
+                                <a href="#" class="btn btn-success btn-sm"><i class="fa fa-key"></i> user</a>
                                 &nbsp;
                                 <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Eliminar</button>
                                 {{Form::close()}}
