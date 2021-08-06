@@ -108,7 +108,23 @@ class ProdutoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $produtos = Produto::find($id);
+        if(!$produtos){
+            return back()->with(['info'=>"Não encontrou"]);
+        }
+
+        $fornecedores = Fornecedor::pluck('nome', 'id');
+        $fabricantes = Fabricante::pluck('nome', 'id');
+        $data = [
+            'title' => "Produtos",
+            'menu' => "Produtos",
+            'submenu' => "Novo",
+            'type' => "produtos",
+            'config' => null,
+            'getFabricantes' => $fabricantes,
+            'getFornecedores' => $fornecedores,
+        ];
+        return view('produtos.create', $data);
     }
 
     /**
