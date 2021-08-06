@@ -33,7 +33,15 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        //
+        
+        $data = [
+            'title' => "Produtos",
+            'menu' => "Produtos",
+            'submenu' => "Novo",
+            'type' => "produtos",
+            'config' => null,
+        ];
+        return view('produtos.create', $data);
     }
 
     /**

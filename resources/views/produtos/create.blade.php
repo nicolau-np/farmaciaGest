@@ -6,7 +6,7 @@
             <div class="card-body">
                 <div class="card-title">
                     <h4 class="submenu">{{$submenu}}</h4>
-                    <h4 class="link"><a href="/funcionarios/" class="btn btn-warning btn-sm"><i class="fa fa-search"></i> Listar</a></h4>
+                    <h4 class="link"><a href="/produtos/" class="btn btn-warning btn-sm"><i class="fa fa-search"></i> Listar</a></h4>
                 </div>
                 <br/>
                 <div class="form">
@@ -22,12 +22,12 @@
                     <div class="alert bg-info" style="color:white" role="alert"><em class="fa fa-lg fa-check">&nbsp;</em> {{session('info')}} <a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
                     @endif
 
-                    {{Form::open(['url' =>"/funcionarios/", 'method'=>"post", 'enctype'=>"multipart/form-data"])}}
+                    {{Form::open(['url' =>"/produtos/", 'method'=>"post", 'enctype'=>"multipart/form-data"])}}
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                {{Form::label('nome', "Nome do funcionario")}} <span class="text-danger">*</span>
-                                {{Form::text('nome', null, ['class'=>"form-control", 'placeholder'=>"Nome do funcionario"])}}
+                                {{Form::label('nome', "Nome do produto")}} <span class="text-danger">*</span>
+                                {{Form::text('nome', null, ['class'=>"form-control", 'placeholder'=>"Nome do produto"])}}
                                 @if($errors->has('nome'))
                                 <span class="text-danger">{{$errors->first('nome')}}</span>
                                 @endif
@@ -36,79 +36,86 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                {{Form::label('genero', "Gênero")}} <span class="text-danger">*</span>
-                                {{Form::select('genero',  [
-                                    'M'=>"M",
-                                    'F'=>"F",
-                                ], null, ['class'=>"form-control", 'placeholder'=>"Gênero"])}}
-                                @if($errors->has('genero'))
-                                <span class="text-danger">{{$errors->first('genero')}}</span>
+                                {{Form::label('fabricante', "Fabricante")}} <span class="text-danger">*</span>
+                                {{Form::select('fabricante',  $getFabricantes, null, ['class'=>"form-control", 'placeholder'=>"Fabricante"])}}
+                                @if($errors->has('fabricante'))
+                                <span class="text-danger">{{$errors->first('fabricante')}}</span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                {{Form::label('data_nascimento', "Data de Nascimento")}} <span class="text-danger">*</span>
-                                {{Form::date('data_nascimento', null, ['class'=>"form-control", 'placeholder'=>"Data de Nascimento"])}}
-                                @if($errors->has('data_nascimento'))
-                                <span class="text-danger">{{$errors->first('data_nascimento')}}</span>
+                                {{Form::label('fornecedor', "Fornecedor")}} <span class="text-danger">*</span>
+                                {{Form::select('fornecedor',  $getFornecedores, null, ['class'=>"form-control", 'placeholder'=>"Fornecedor"])}}
+                                @if($errors->has('fornecedor'))
+                                <span class="text-danger">{{$errors->first('fornecedor')}}</span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="col-md-5">
+                        <div class="col-md-4">
                             <div class="form-group">
-                                {{Form::label('foto', "Foto")}}
-                                {{Form::file('foto', null, ['class'=>"form-control", 'placeholder'=>"Foto"])}}
-                                @if($errors->has('foto'))
-                                <span class="text-danger">{{$errors->first('foto')}}</span>
+                                {{Form::label('categoria', "Categoria")}} <span class="text-danger">*</span>
+                                {{Form::select('categoria',  [
+                                    'Analgésicos'=>"Analgésicos",
+                                    'Xapores'=>"Xaropes",
+                                    'Pomadas'=>"Pomadas",
+                                ], null, ['class'=>"form-control", 'placeholder'=>"Categoria"])}}
+                                @if($errors->has('categoria'))
+                                <span class="text-danger">{{$errors->first('categoria')}}</span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                {{Form::label('telefone', "Telefone")}} <span class="text-danger">*</span>
-                                {{Form::number('telefone', null, ['class'=>"form-control", 'placeholder'=>"Telefone"])}}
-                                @if($errors->has('telefone'))
-                                <span class="text-danger">{{$errors->first('telefone')}}</span>
+                                {{Form::label('preco', "Preço")}} <span class="text-danger">*</span>
+                                {{Form::number('preco', null, ['class'=>"form-control", 'placeholder'=>"Preço"])}}
+                                @if($errors->has('preco'))
+                                <span class="text-danger">{{$errors->first('preco')}}</span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                {{Form::label('quantidade', "Quantidade")}} <span class="text-danger">*</span>
+                                {{Form::number('quantidade', null, ['class'=>"form-control", 'placeholder'=>"Quantidade"])}}
+                                @if($errors->has('quantidade'))
+                                <span class="text-danger">{{$errors->first('quantidade')}}</span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                {{Form::label('bairro', "Endereço")}}
-                                {{Form::text('bairro', null, ['class'=>"form-control", 'placeholder'=>"Endereço"])}}
-                                @if($errors->has('bairro'))
-                                <span class="text-danger">{{$errors->first('bairro')}}</span>
-                                @endif
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                {{Form::label('email', "E-mail")}}
-                                {{Form::email('email', null, ['class'=>"form-control", 'placeholder'=>"E-mail"])}}
-                                @if($errors->has('email'))
-                                <span class="text-danger">{{$errors->first('email')}}</span>
+                                {{Form::label('data_emissao', "Data criação")}} <span class="text-danger">*</span>
+                                {{Form::date('data_emissao', null, ['class'=>"form-control", 'placeholder'=>"Data criação"])}}
+                                @if($errors->has('data_emissao'))
+                                <span class="text-danger">{{$errors->first('data_emissao')}}</span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                {{Form::label('cargo', "Cargo")}} <span class="text-danger">*</span>
-                                {{Form::select('cargo',  [
-                                    'Recepção'=>"Recepção",
-                                    'Atendimento'=>"Atendimento",
-                                    'Contabilista'=>"Contabilista",
-                                    'Gestor de Marketing'=>"Gestor de Marketing",
-                                ], null, ['class'=>"form-control", 'placeholder'=>"Cargo"])}}
-                                @if($errors->has('cargo'))
-                                <span class="text-danger">{{$errors->first('cargo')}}</span>
+                                {{Form::label('data_caducidade', "Data Caducidade")}} <span class="text-danger">*</span>
+                                {{Form::date('data_caducidade', null, ['class'=>"form-control", 'placeholder'=>"Data Caducidade"])}}
+                                @if($errors->has('data_caducidade'))
+                                <span class="text-danger">{{$errors->first('data_caducidade')}}</span>
+                                @endif
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{Form::label('descricao', "Descrição")}} <span class="text-danger">*</span>
+                                {{Form::text('descricao', null, ['class'=>"form-control", 'placeholder'=>"Descrição"])}}
+                                @if($errors->has('descricao'))
+                                <span class="text-danger">{{$errors->first('descricao')}}</span>
                                 @endif
                             </div>
                         </div>
