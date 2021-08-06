@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Produto;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
@@ -13,7 +14,16 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        //
+        $produtos = Produto::where('estado', '!=', "delete")->paginate(8);
+        $data = [
+            'title' => "Produtos",
+            'menu' => "Produtos",
+            'submenu' => "Listar",
+            'type' => "produtos",
+            'config' => null,
+            'getProdutos' => $produtos,
+        ];
+        return view('produtos.list', $data);
     }
 
     /**
