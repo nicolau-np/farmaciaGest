@@ -91,7 +91,7 @@ class FuncionarioController extends Controller
         $pessoa = Pessoa::create($data['pessoa']);
         if ($pessoa) {
             $data['funcionario']['id_pessoa'] = $pessoa->id;
-            if (Funcionario::create($data)) {
+            if (Funcionario::create($data['funcionario'])) {
                 return back()->with(['success' => "Feito com sucesso"]);
             }
         }
