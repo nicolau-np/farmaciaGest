@@ -22,12 +22,12 @@
                     <div class="alert bg-info" style="color:white" role="alert"><em class="fa fa-lg fa-check">&nbsp;</em> {{session('info')}} <a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
                     @endif
 
-                    {{Form::open(['url' =>"/funcionarios/", 'method'=>"post", 'enctype'=>"multipart/form-data"])}}
+                    {{Form::open(['url' =>"/funcionarios/{$getFuncionario->id}", 'method'=>"put", 'enctype'=>"multipart/form-data"])}}
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 {{Form::label('nome', "Nome do funcionario")}} <span class="text-danger">*</span>
-                                {{Form::text('nome', null, ['class'=>"form-control", 'placeholder'=>"Nome do funcionario"])}}
+                                {{Form::text('nome', $getFuncionario->pessoa->nome, ['class'=>"form-control", 'placeholder'=>"Nome do funcionario"])}}
                                 @if($errors->has('nome'))
                                 <span class="text-danger">{{$errors->first('nome')}}</span>
                                 @endif
@@ -40,7 +40,7 @@
                                 {{Form::select('genero',  [
                                     'M'=>"M",
                                     'F'=>"F",
-                                ], null, ['class'=>"form-control", 'placeholder'=>"Gênero"])}}
+                                ], $getFuncionario->pessoa->genero, ['class'=>"form-control", 'placeholder'=>"Gênero"])}}
                                 @if($errors->has('genero'))
                                 <span class="text-danger">{{$errors->first('genero')}}</span>
                                 @endif
@@ -50,7 +50,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 {{Form::label('data_nascimento', "Data de Nascimento")}} <span class="text-danger">*</span>
-                                {{Form::date('data_nascimento', null, ['class'=>"form-control", 'placeholder'=>"Data de Nascimento"])}}
+                                {{Form::date('data_nascimento', $getFuncionario->pessoa->data_nascimento, ['class'=>"form-control", 'placeholder'=>"Data de Nascimento"])}}
                                 @if($errors->has('data_nascimento'))
                                 <span class="text-danger">{{$errors->first('data_nascimento')}}</span>
                                 @endif
@@ -70,7 +70,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 {{Form::label('telefone', "Telefone")}} <span class="text-danger">*</span>
-                                {{Form::number('telefone', null, ['class'=>"form-control", 'placeholder'=>"Telefone"])}}
+                                {{Form::number('telefone', $getFuncionario->pessoa->telefone, ['class'=>"form-control", 'placeholder'=>"Telefone"])}}
                                 @if($errors->has('telefone'))
                                 <span class="text-danger">{{$errors->first('telefone')}}</span>
                                 @endif
@@ -80,7 +80,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 {{Form::label('bairro', "Endereço")}}
-                                {{Form::text('bairro', null, ['class'=>"form-control", 'placeholder'=>"Endereço"])}}
+                                {{Form::text('bairro', $getFuncionario->pessoa->bairro, ['class'=>"form-control", 'placeholder'=>"Endereço"])}}
                                 @if($errors->has('bairro'))
                                 <span class="text-danger">{{$errors->first('bairro')}}</span>
                                 @endif
@@ -91,7 +91,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 {{Form::label('email', "E-mail")}}
-                                {{Form::email('email', null, ['class'=>"form-control", 'placeholder'=>"E-mail"])}}
+                                {{Form::email('email', $getFuncionario->pessoa->email, ['class'=>"form-control", 'placeholder'=>"E-mail"])}}
                                 @if($errors->has('email'))
                                 <span class="text-danger">{{$errors->first('email')}}</span>
                                 @endif
@@ -106,7 +106,7 @@
                                     'Atendimento'=>"Atendimento",
                                     'Contabilista'=>"Contabilista",
                                     'Gestor de Marketing'=>"Gestor de Marketing",
-                                ], null, ['class'=>"form-control", 'placeholder'=>"Cargo"])}}
+                                ], $getFuncionario->cargo, ['class'=>"form-control", 'placeholder'=>"Cargo"])}}
                                 @if($errors->has('cargo'))
                                 <span class="text-danger">{{$errors->first('cargo')}}</span>
                                 @endif
@@ -119,7 +119,7 @@
                                 {{Form::select('estado',  [
                                     'on'=>"on",
                                     'off'=>"off",
-                                ], null, ['class'=>"form-control", 'placeholder'=>"Estado"])}}
+                                ], $getFuncionario->estado, ['class'=>"form-control", 'placeholder'=>"Estado"])}}
                                 @if($errors->has('estado'))
                                 <span class="text-danger">{{$errors->first('estado')}}</span>
                                 @endif

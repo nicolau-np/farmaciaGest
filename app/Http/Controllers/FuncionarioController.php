@@ -187,7 +187,7 @@ class FuncionarioController extends Controller
         $pessoa = Pessoa::find($funcionario->pessoa->id)->update($data['pessoa']);
         if ($pessoa) {
 
-            if (Funcionario::find($funcionario->id)->update($data)) {
+            if (Funcionario::find($funcionario->id)->update($data['funcionario'])) {
                 return back()->with(['success' => "Feito com sucesso"]);
             }
         }
