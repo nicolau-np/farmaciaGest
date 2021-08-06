@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Fabricante;
+use App\Fornecedor;
 use App\Produto;
 use Illuminate\Http\Request;
 
@@ -33,13 +35,16 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        
+        $fornecedores = Fornecedor::pluck('nome', 'id');
+        $fabricantes = Fabricante::pluck('nome', 'id');
         $data = [
             'title' => "Produtos",
             'menu' => "Produtos",
             'submenu' => "Novo",
             'type' => "produtos",
             'config' => null,
+            'getFabricantes'=>$fabricantes,
+            'getFornecedores'=>$fornecedores,
         ];
         return view('produtos.create', $data);
     }
@@ -52,7 +57,7 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

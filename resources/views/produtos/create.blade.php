@@ -68,7 +68,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <div class="form-group">
                                 {{Form::label('preco', "Preço")}} <span class="text-danger">*</span>
                                 {{Form::number('preco', null, ['class'=>"form-control", 'placeholder'=>"Preço"])}}
