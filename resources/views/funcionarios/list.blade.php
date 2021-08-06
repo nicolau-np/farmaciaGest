@@ -44,7 +44,7 @@
                             <th>{{$loop->iteration}}</th>
                             <td>{{$funcionarios->pessoa->nome}}</td>
                             <td>{{$funcionarios->pessoa->genero}}</td>
-                            <td>{{$funcionarios->pessoa->data_nascimento}}</td>
+                            <td>{{date('d-m-Y', strtotime($funcionarios->pessoa->data_nascimento))}}</td>
                             <td>{{$funcionarios->pessoa->bairro}}</td>
                             <td>{{$funcionarios->pessoa->telefone}}</td>
                             <td>{{$funcionarios->pessoa->email}}</td>
