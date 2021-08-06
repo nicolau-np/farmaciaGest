@@ -71,7 +71,7 @@
                         <div class="col-md-2">
                             <div class="form-group">
                                 {{Form::label('preco', "Preço")}} <span class="text-danger">*</span>
-                                {{Form::number('preco', $getProduto->preco, ['class'=>"form-control", 'placeholder'=>"Preço"])}}
+                                {{Form::number('preco', $getProduto->valor_venda, ['class'=>"form-control", 'placeholder'=>"Preço"])}}
                                 @if($errors->has('preco'))
                                 <span class="text-danger">{{$errors->first('preco')}}</span>
                                 @endif
