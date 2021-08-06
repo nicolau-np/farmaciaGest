@@ -125,7 +125,7 @@ class ProdutoController extends Controller
             'getFornecedores' => $fornecedores,
             'getProduto'=>$produto,
         ];
-        return view('produtos.create', $data);
+        return view('produtos.edit', $data);
     }
 
     /**
