@@ -47,7 +47,7 @@
                             <td>{{$produtos->fabricante->nome}}</td>
                             <td>{{$produtos->fornecedor->nome}}</td>
                             <td>{{$produtos->categoria}}</td>
-                            <td>{{$produtos->preco}}</td>
+                            <td>{{number_format($produtos->valor_venda,2,',','.')}}</td>
                             <td>{{$produtos->quantidade}}</td>
                             <td>{{date('d-m-Y', strtotime($produtos->data_emissao))}}</td>
                             <td>{{date('d-m-Y', strtotime($produtos->data_caducidade))}}</td>
