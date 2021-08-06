@@ -43,8 +43,8 @@ class ProdutoController extends Controller
             'submenu' => "Novo",
             'type' => "produtos",
             'config' => null,
-            'getFabricantes'=>$fabricantes,
-            'getFornecedores'=>$fornecedores,
+            'getFabricantes' => $fabricantes,
+            'getFornecedores' => $fornecedores,
         ];
         return view('produtos.create', $data);
     }
@@ -57,7 +57,18 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $request->validate([
+            'nome' => ['required', 'string', 'min:4', 'max:255'],
+            'fabricantes' => ['required', 'integer', 'min:1'],
+            'fornecedores' => ['required', 'integer', 'min:1'],
+            'categoria' => ['required', 'string'],
+            'preco' => ['required', 'numeric', 'min:1'],
+            'quantidade' => ['required', 'integer', 'min:1'],
+            'data_emissao' => ['required', 'date'],
+            'data_caducidade' => ['required', 'date'],
+            'descricao' => ['required', 'string', 'min:1', 'max:255'],
+            'estado' => ['required', 'string', 'min:2'],
+        ]);
     }
 
     /**
