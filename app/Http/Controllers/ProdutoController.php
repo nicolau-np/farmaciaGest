@@ -59,8 +59,8 @@ class ProdutoController extends Controller
     {
         $request->validate([
             'nome' => ['required', 'string', 'min:4', 'max:255'],
-            'fabricantes' => ['required', 'integer', 'min:1'],
-            'fornecedores' => ['required', 'integer', 'min:1'],
+            'fabricante' => ['required', 'integer', 'min:1'],
+            'fornecedor' => ['required', 'integer', 'min:1'],
             'categoria' => ['required', 'string'],
             'preco' => ['required', 'numeric', 'min:1'],
             'quantidade' => ['required', 'integer', 'min:1'],
