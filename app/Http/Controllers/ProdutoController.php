@@ -108,8 +108,8 @@ class ProdutoController extends Controller
      */
     public function edit($id)
     {
-        $produtos = Produto::find($id);
-        if(!$produtos){
+        $produto = Produto::find($id);
+        if(!$produto){
             return back()->with(['info'=>"Não encontrou"]);
         }
 
@@ -118,11 +118,12 @@ class ProdutoController extends Controller
         $data = [
             'title' => "Produtos",
             'menu' => "Produtos",
-            'submenu' => "Novo",
+            'submenu' => "Editar",
             'type' => "produtos",
             'config' => null,
             'getFabricantes' => $fabricantes,
             'getFornecedores' => $fornecedores,
+            'getProduto'=>$produto,
         ];
         return view('produtos.create', $data);
     }
