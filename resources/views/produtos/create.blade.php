@@ -58,7 +58,7 @@
                             <div class="form-group">
                                 {{Form::label('categoria', "Categoria")}} <span class="text-danger">*</span>
                                 {{Form::select('categoria',  [
-                                    'Analgésicos'=>"Analgésicos",
+                                    'Comprimidos'=>"Comprimidos",
                                     'Xapores'=>"Xaropes",
                                     'Pomadas'=>"Pomadas",
                                 ], null, ['class'=>"form-control", 'placeholder'=>"Categoria"])}}

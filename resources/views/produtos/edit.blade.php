@@ -22,12 +22,12 @@
                     <div class="alert bg-info" style="color:white" role="alert"><em class="fa fa-lg fa-check">&nbsp;</em> {{session('info')}} <a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
                     @endif
 
-                    {{Form::open(['url' =>"/produtos/", 'method'=>"post", 'enctype'=>"multipart/form-data"])}}
+                    {{Form::open(['url' =>"/produtos/{$getProduto->id}", 'method'=>"put", 'enctype'=>"multipart/form-data"])}}
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 {{Form::label('nome', "Nome do produto")}} <span class="text-danger">*</span>
-                                {{Form::text('nome', null, ['class'=>"form-control", 'placeholder'=>"Nome do produto"])}}
+                                {{Form::text('nome', $getProduto->nome, ['class'=>"form-control", 'placeholder'=>"Nome do produto"])}}
                                 @if($errors->has('nome'))
                                 <span class="text-danger">{{$errors->first('nome')}}</span>
                                 @endif
@@ -37,7 +37,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 {{Form::label('fabricante', "Fabricante")}} <span class="text-danger">*</span>
-                                {{Form::select('fabricante',  $getFabricantes, null, ['class'=>"form-control", 'placeholder'=>"Fabricante"])}}
+                                {{Form::select('fabricante',  $getFabricantes, $getProduto->id_fabricante, ['class'=>"form-control", 'placeholder'=>"Fabricante"])}}
                                 @if($errors->has('fabricante'))
                                 <span class="text-danger">{{$errors->first('fabricante')}}</span>
                                 @endif
@@ -47,7 +47,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 {{Form::label('fornecedor', "Fornecedor")}} <span class="text-danger">*</span>
-                                {{Form::select('fornecedor',  $getFornecedores, null, ['class'=>"form-control", 'placeholder'=>"Fornecedor"])}}
+                                {{Form::select('fornecedor',  $getFornecedores, $getProduto->id_fornecedor, ['class'=>"form-control", 'placeholder'=>"Fornecedor"])}}
                                 @if($errors->has('fornecedor'))
                                 <span class="text-danger">{{$errors->first('fornecedor')}}</span>
                                 @endif
@@ -58,10 +58,10 @@
                             <div class="form-group">
                                 {{Form::label('categoria', "Categoria")}} <span class="text-danger">*</span>
                                 {{Form::select('categoria',  [
-                                    'Analgésicos'=>"Analgésicos",
+                                    'Comprimidos'=>"Comprimidos",
                                     'Xapores'=>"Xaropes",
                                     'Pomadas'=>"Pomadas",
-                                ], null, ['class'=>"form-control", 'placeholder'=>"Categoria"])}}
+                                ], $getProduto->categoria, ['class'=>"form-control", 'placeholder'=>"Categoria"])}}
                                 @if($errors->has('categoria'))
                                 <span class="text-danger">{{$errors->first('categoria')}}</span>
                                 @endif
@@ -71,7 +71,7 @@
                         <div class="col-md-2">
                             <div class="form-group">
                                 {{Form::label('preco', "Preço")}} <span class="text-danger">*</span>
-                                {{Form::number('preco', null, ['class'=>"form-control", 'placeholder'=>"Preço"])}}
+                                {{Form::number('preco', $getProduto->preco, ['class'=>"form-control", 'placeholder'=>"Preço"])}}
                                 @if($errors->has('preco'))
                                 <span class="text-danger">{{$errors->first('preco')}}</span>
                                 @endif
@@ -81,7 +81,7 @@
                         <div class="col-md-2">
                             <div class="form-group">
                                 {{Form::label('quantidade', "Quantidade")}} <span class="text-danger">*</span>
-                                {{Form::number('quantidade', null, ['class'=>"form-control", 'placeholder'=>"Quantidade"])}}
+                                {{Form::number('quantidade', $getProduto->quantidade, ['class'=>"form-control", 'placeholder'=>"Quantidade"])}}
                                 @if($errors->has('quantidade'))
                                 <span class="text-danger">{{$errors->first('quantidade')}}</span>
                                 @endif
@@ -91,7 +91,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 {{Form::label('data_emissao', "Data criação")}} <span class="text-danger">*</span>
-                                {{Form::date('data_emissao', null, ['class'=>"form-control", 'placeholder'=>"Data criação"])}}
+                                {{Form::date('data_emissao', $getProduto->data_emissao, ['class'=>"form-control", 'placeholder'=>"Data criação"])}}
                                 @if($errors->has('data_emissao'))
                                 <span class="text-danger">{{$errors->first('data_emissao')}}</span>
                                 @endif
@@ -101,7 +101,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 {{Form::label('data_caducidade', "Data Caducidade")}} <span class="text-danger">*</span>
-                                {{Form::date('data_caducidade', null, ['class'=>"form-control", 'placeholder'=>"Data Caducidade"])}}
+                                {{Form::date('data_caducidade', $getProduto->data_caducidade, ['class'=>"form-control", 'placeholder'=>"Data Caducidade"])}}
                                 @if($errors->has('data_caducidade'))
                                 <span class="text-danger">{{$errors->first('data_caducidade')}}</span>
                                 @endif
@@ -113,7 +113,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 {{Form::label('descricao', "Descrição")}} <span class="text-danger">*</span>
-                                {{Form::text('descricao', null, ['class'=>"form-control", 'placeholder'=>"Descrição"])}}
+                                {{Form::text('descricao', $getProduto->descricao, ['class'=>"form-control", 'placeholder'=>"Descrição"])}}
                                 @if($errors->has('descricao'))
                                 <span class="text-danger">{{$errors->first('descricao')}}</span>
                                 @endif
@@ -126,7 +126,7 @@
                                 {{Form::select('estado',  [
                                     'on'=>"on",
                                     'off'=>"off",
-                                ], null, ['class'=>"form-control", 'placeholder'=>"Estado"])}}
+                                ], $getProduto->estado, ['class'=>"form-control", 'placeholder'=>"Estado"])}}
                                 @if($errors->has('estado'))
                                 <span class="text-danger">{{$errors->first('estado')}}</span>
                                 @endif
