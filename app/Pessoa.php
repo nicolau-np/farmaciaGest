@@ -19,7 +19,7 @@ class Pessoa extends Model
     ];
 
     public function funcionario(){
-        return $this->hasMany(Funcionario::class, 'id_funcionario', 'id');
+        return $this->hasMany(Funcionario::class, 'id_pessoa', 'id');
     }
 
     public function usuario(){
