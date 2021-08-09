@@ -41,6 +41,7 @@ Route::group(['prefix' =>"/estatistica"], function(){
 Route::group(['prefix' =>"/vendas"], function(){
     Route::get('/', "VendaController@index");
     Route::get('/create', "VendaController@create");
+    Route::post('/store', "VendaController@store")->name('save_venda');
 });
 
 Route::get('/sobre', "HomeController@sobre");

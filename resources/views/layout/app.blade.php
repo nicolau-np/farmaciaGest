@@ -429,6 +429,17 @@
 
             $('.venda').submit(function(e){
                 e.preventDefault();
+                var data = $(this).serialize();
+
+                $.ajax({
+                    type: "post",
+                    url: "{{route('save_venda')}}",
+                    data: data,
+                    dataType: "html",
+                    success: function (response) {
+                        alert('feito com sucesso');
+                    }
+                });
             });
         });
     </script>
