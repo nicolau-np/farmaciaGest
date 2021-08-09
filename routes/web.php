@@ -46,6 +46,7 @@ Route::group(['prefix' =>"/vendas"], function(){
     Route::get('/create', "VendaController@create");
     Route::post('/store', "VendaController@store")->name('save_venda');
     Route::get('/carrinho', "VendaController@carrinho")->name('carrinho');
+    Route::get('/select/{id}', "VendaController@select")->name('select');
 });
 
 Route::get('/sobre', "HomeController@sobre");
