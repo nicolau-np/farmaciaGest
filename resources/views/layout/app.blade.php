@@ -438,7 +438,7 @@
                     dataType: "html",
                     success: function (response) {
                         if(response > 0){
-                            alert('feito com sucesso');
+                            window.location.href = "{{route('show', "+response+")}}";
                         }
 
                     }
