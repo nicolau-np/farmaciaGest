@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-md-5" style="text-align:center;">
                         <div class="form-inline">
-                            {{Form::text('produto', null, ['class'=>"form-control", 'placeholder'=>"Pesquisar produto..."])}}
+                            {{Form::text('produto', null, ['class'=>"form-control search-produto", 'placeholder'=>"Pesquisar produto..."])}}
                             &nbsp;&nbsp;
                             <button class="btn btn-primary"><i class="fa fa-search"></i></button>
                         </div>
@@ -31,7 +31,7 @@
             </div>
 
             <div class="load_tabela">
-                
+
             </div>
 
             </div>
@@ -41,5 +41,14 @@
     </div>
 
 </div>
+<script>
+    $(document).ready(function(){
+        /*$('.search-produto').keyup(function(){
+            var search = $(this).val();
+            $('.load_tabela').text(search);
+        });*/
 
+        alert('hello');
+    });
+</script>
 @endsection
