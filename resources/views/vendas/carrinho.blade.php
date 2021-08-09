@@ -57,13 +57,13 @@
                             <div class="card-header">
                                 <h5 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2"><i class="fa" aria-hidden="true"></i> Carrinho</h5>
                             </div>
-                            <div id="collapseTwo2" class="collapse" data-parent="#accordion-two">
+                            <div id="collapseTwo2" class="collapse show" data-parent="#accordion-two">
                                 <div class="card-body">
 
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
