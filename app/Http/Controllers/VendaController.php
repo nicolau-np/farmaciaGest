@@ -23,6 +23,7 @@ class VendaController extends Controller
      */
     public function create()
     {
+        
         $data = [
             'title' => "Nova Venda",
             'menu' => "Vendas",
