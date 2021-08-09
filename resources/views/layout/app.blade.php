@@ -359,7 +359,27 @@
                 </div>
                 <div class="modal-body">
                     {{Form::open(['url' =>"/vendas/store", 'method'=>"post"])}}
-                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {{Form::label('nome', "Nome do cliente")}}
+                                {{Form::text('nome', null, ['class'=>"form-control", 'placeholder'=>"Nome do cliente"])}}
+                                @if($errors->has('nome'))
+                                    <span class="text-danger">{{$errors->first('nome')}}</span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {{Form::label('telefone', "Telefone")}}
+                                {{Form::number('telefone', null, ['class'=>"form-control", 'placeholder'=>"Telefone"])}}
+                                @if($errors->has('telefone'))
+                                    <span class="text-danger">{{$errors->first('telefone')}}</span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                     {{Form::close()}}
                 </div>
                 <div class="modal-footer">
