@@ -352,17 +352,18 @@
     <div class="modal fade" id="modalVenda">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
+                {{Form::open(['url' =>"/vendas/store", 'method'=>"post", 'class'=>"venda"])}}
                 <div class="modal-header">
                     <h5 class="modal-title">Nova Venda</h5>
                     <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    {{Form::open(['url' =>"/vendas/store", 'method'=>"post"])}}
+
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                {{Form::label('nome', "Nome do cliente")}}
+                                {{Form::label('nome', "Nome do cliente")}} <span class="text-danger">*</span>
                                 {{Form::text('nome', null, ['class'=>"form-control", 'placeholder'=>"Nome do cliente"])}}
                                 @if($errors->has('nome'))
                                     <span class="text-danger">{{$errors->first('nome')}}</span>
@@ -372,7 +373,7 @@
 
                         <div class="col-md-12">
                             <div class="form-group">
-                                {{Form::label('telefone', "Telefone")}}
+                                {{Form::label('telefone', "Telefone")}} <span class="text-danger">*</span>
                                 {{Form::number('telefone', null, ['class'=>"form-control", 'placeholder'=>"Telefone"])}}
                                 @if($errors->has('telefone'))
                                     <span class="text-danger">{{$errors->first('telefone')}}</span>
@@ -380,11 +381,12 @@
                             </div>
                         </div>
                     </div>
-                    {{Form::close()}}
+
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </div>
+                {{Form::close()}}
             </div>
         </div>
     </div>
@@ -423,6 +425,10 @@
         $(document).ready(function(){
             $(".abrirVenda").click(function(){
                 $('#modalVenda').modal("show");
+            });
+
+            $('.venda').submit(function(e){
+                e.preventDefault();
             });
         });
     </script>
