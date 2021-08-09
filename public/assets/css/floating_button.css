@@ -40,6 +40,11 @@
     background-color: #000;
 }
 
+.venda-btn:hover{
+    opacity: 1;
+    color: #fff;
+    background-color: #000;
+}
 
 .text-chat{
 text-align: left;

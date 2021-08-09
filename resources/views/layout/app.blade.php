@@ -327,7 +327,7 @@
             <i class="fa fa-plus-circle fa-2x animate-zoom"></i> <span class="text-chat"></span>
         </a>
 
-        <a href="#" class="chat-btn listVenda">
+        <a href="/vendas/list" class="chat-btn">
             <i class="fa fa-shopping-cart fa-2x animate-zoom"></i> <span class="text-chat">(0)</span>
         </a>
 
