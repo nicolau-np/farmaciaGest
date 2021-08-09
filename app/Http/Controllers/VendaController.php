@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VendaController extends Controller
 {
@@ -13,7 +14,14 @@ class VendaController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => "Nova Venda",
+            'menu' => "Vendas",
+            'submenu' => "Listar",
+            'type' => "vendas",
+            'config' => null,
+        ];
+        return view('vendas.list', $data);
     }
 
     /**
@@ -23,7 +31,7 @@ class VendaController extends Controller
      */
     public function create()
     {
-        
+
         $data = [
             'title' => "Nova Venda",
             'menu' => "Vendas",
@@ -42,7 +50,28 @@ class VendaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id_funcionario = Auth::user()->pessoa->funcionario->id;
+        $request->validate([
+            'nome' => ['required', 'string', 'min:5', 'max:255',],
+            'telefone' =>['required', 'integer', 'min:1'],
+        ]);
+
+        $data['pessoa'] = [
+            'nome'=> $request->nome,
+            'telefone'=>$request->telefone,
+        ];
+
+        $data['cliente']=[
+
+        ];
+
+        $data['venda'] = [
+
+        ];
+
+        if(){
+
+        }
     }
 
     /**
