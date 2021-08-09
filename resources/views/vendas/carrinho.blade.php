@@ -29,7 +29,7 @@
                 </div>
                 {{Form::close()}}
             </div>
-
+            <hr/>
             <div class="load_tabela">
 
             </div>
@@ -43,12 +43,10 @@
 </div>
 <script>
     $(document).ready(function(){
-        /*$('.search-produto').keyup(function(){
+        $('.search-produto').keyup(function(){
             var search = $(this).val();
             $('.load_tabela').text(search);
-        });*/
-
-        alert('hello');
+        });
     });
 </script>
 @endsection

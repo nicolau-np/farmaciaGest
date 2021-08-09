@@ -18,6 +18,7 @@
     @endif
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('assets/css/floating_button.css')}}"/>
+    <script src="{{asset('assets/js/jquery.js')}}"></script>
 </head>
 
 <body class="@if($type=="login") h-100 @endif">
