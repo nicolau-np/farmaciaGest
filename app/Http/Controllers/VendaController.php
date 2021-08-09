@@ -8,6 +8,7 @@ use App\Pessoa;
 use App\Venda;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class VendaController extends Controller
 {
@@ -86,6 +87,7 @@ class VendaController extends Controller
                 $data['venda']['id_cliente']=$cliente->id;
                 $venda = Venda::create($data['venda']);
                 if($venda){
+                    Session::put('id_venda', $venda->id);
                     return $venda->id;
                 }
             }
@@ -102,7 +104,7 @@ class VendaController extends Controller
      */
     public function show($id)
     {
-        echo "ID VENDA: ".$id;
+
     }
 
     /**
@@ -137,5 +139,18 @@ class VendaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function carrinho(){
+        if(!Session::has('id_venda')){
+         return back()->with(['error'=>"Deve criar uma nova venda"]);
+        }
+        $id_venda = Session::get('id_venda');
+        $venda = Venda::find($id_venda);
+        if(!$venda){
+            return back()->with(['error'=>"Nao encontrou"]);
+        }
+
+        echo $venda->id;
     }
 }
