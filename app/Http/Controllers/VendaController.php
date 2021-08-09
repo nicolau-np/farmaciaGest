@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Cliente;
+use App\Pessoa;
+use App\Venda;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -62,15 +65,28 @@ class VendaController extends Controller
         ];
 
         $data['cliente']=[
-
+            'id_pessoa'=> null,
+            'estado'=>"on",
         ];
 
         $data['venda'] = [
-
+            'id_funcionario'=>$id_funcionario,
+            'id_cliente'=>null,
+            'valor_total'=>0,
+            'estado'=>"on",
         ];
 
-        if(){
-
+        $pessoa = Pessoa::create($data['pessoa']);
+        if($pessoa){
+            $data['cliente']['id_pessoa'] = $pessoa->id;
+            $cliente = Cliente::create($data['cliente']);
+            if($cliente){
+                $data['venda']['id_cliente']=$cliente->id;
+                $venda = Venda::create($data['venda']);
+                if($venda){
+                    return $venda->id;
+                }
+            }
         }
     }
 
