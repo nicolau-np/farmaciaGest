@@ -4,7 +4,7 @@
     <div class="col-lg-3 col-sm-6">
         <div class="card gradient-1">
             <div class="card-body">
-                <a href="/vendas/create">
+                <a href="/vendas/create" style="text-decoration: none; color:#fff;">
                 <h3 class="card-title text-white">Venda</h3>
                 <div class="d-inline-block">
                     <h2 class="text-white">00</h2>

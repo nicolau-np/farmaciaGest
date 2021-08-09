@@ -39,7 +39,7 @@ Route::group(['prefix' =>"/estatistica"], function(){
 });
 
 Route::group(['prefix' =>"/vendas"], function(){
-    Route::get('/create', "ClienteController@edit");
+    Route::get('/create', "VendaController@create");
 });
 
 Route::get('/sobre', "HomeController@sobre");
