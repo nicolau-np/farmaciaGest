@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cliente;
+use App\Funcionario;
 use App\Pessoa;
 use App\Venda;
 use Illuminate\Http\Request;
@@ -53,9 +54,10 @@ class VendaController extends Controller
      */
     public function store(Request $request)
     {
-        $id_funcionario = Auth::user()->pessoa->funcionario->id;
+        $id_pessoa = Auth::user()->pessoa->id;
+        $funcionario = Funcionario::where(['id_pessoa'=>$id_pessoa])->first();
         $request->validate([
-            'nome' => ['required', 'string', 'min:5', 'max:255',],
+            'nome' => ['required', 'string', 'min:5', 'max:255'],
             'telefone' =>['required', 'integer', 'min:1'],
         ]);
 
@@ -70,13 +72,13 @@ class VendaController extends Controller
         ];
 
         $data['venda'] = [
-            'id_funcionario'=>$id_funcionario,
+            'id_funcionario'=>null,
             'id_cliente'=>null,
             'valor_total'=>0,
             'estado'=>"on",
         ];
 
-        $pessoa = Pessoa::create($data['pessoa']);
+        /*$pessoa = Pessoa::create($data['pessoa']);
         if($pessoa){
             $data['cliente']['id_pessoa'] = $pessoa->id;
             $cliente = Cliente::create($data['cliente']);
@@ -87,7 +89,9 @@ class VendaController extends Controller
                     return $venda->id;
                 }
             }
-        }
+        }*/
+
+        return $funcionario->id;
     }
 
     /**

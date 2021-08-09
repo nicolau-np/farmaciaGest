@@ -437,7 +437,10 @@
                     data: data,
                     dataType: "html",
                     success: function (response) {
-                        alert('feito com sucesso');
+                        if(response > 0){
+                            alert('feito com sucesso');
+                        }
+
                     }
                 });
             });
