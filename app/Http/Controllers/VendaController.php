@@ -19,12 +19,16 @@ class VendaController extends Controller
      */
     public function index()
     {
+        $id_pessoa = Auth::user()->pessoa->id;
+        $funcionario = Funcionario::where(['id_pessoa'=>$id_pessoa])->first();
+        $vendas = Venda::where(['estado'=>"on", 'id_funcionario'=>$funcionario->id])->get();
         $data = [
             'title' => "Nova Venda",
             'menu' => "Vendas",
             'submenu' => "Listar",
             'type' => "vendas",
             'config' => null,
+            'getVendas'=>$vendas,
         ];
         return view('vendas.list', $data);
     }

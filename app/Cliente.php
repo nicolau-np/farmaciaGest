@@ -13,7 +13,7 @@ class Cliente extends Model
         'estado',
     ];
 
-    public function cliente(){
+    public function pessoa(){
         return $this->belongsTo(Pessoa::class, 'id_pessoa', 'id');
     }
 
