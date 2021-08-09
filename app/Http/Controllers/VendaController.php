@@ -153,7 +153,14 @@ class VendaController extends Controller
             return back()->with(['error' => "Nao encontrou"]);
         }
 
-        echo $venda->id;
+        $data = [
+            'title' => "Nova Venda",
+            'menu' => "Vendas",
+            'submenu' => "Carrinho",
+            'type' => "vendas",
+            'config' => null,
+        ];
+        return view('vendas.carrinho', $data);
     }
 
     public function select($id)
