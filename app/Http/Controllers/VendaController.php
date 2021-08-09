@@ -72,13 +72,13 @@ class VendaController extends Controller
         ];
 
         $data['venda'] = [
-            'id_funcionario'=>null,
+            'id_funcionario'=>$funcionario->id,
             'id_cliente'=>null,
             'valor_total'=>0,
             'estado'=>"on",
         ];
 
-        /*$pessoa = Pessoa::create($data['pessoa']);
+        $pessoa = Pessoa::create($data['pessoa']);
         if($pessoa){
             $data['cliente']['id_pessoa'] = $pessoa->id;
             $cliente = Cliente::create($data['cliente']);
@@ -89,9 +89,9 @@ class VendaController extends Controller
                     return $venda->id;
                 }
             }
-        }*/
+        }
 
-        return $funcionario->id;
+
     }
 
     /**

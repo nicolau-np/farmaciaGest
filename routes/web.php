@@ -48,3 +48,9 @@ Route::group(['prefix' =>"/vendas"], function(){
 });
 
 Route::get('/sobre', "HomeController@sobre");
+
+/*Route::get('/text', function(){
+$id_pessoa = Auth::user()->pessoa->id;
+$funcionario = Funcionario::where('id_pessoa', $id_pessoa)->first();
+echo $funcionario->id;
+});*/
