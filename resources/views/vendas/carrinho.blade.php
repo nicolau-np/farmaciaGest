@@ -21,7 +21,7 @@
                         <div class="form-inline">
                             {{Form::text('codigo', null, ['class'=>"form-control", 'placeholder'=>"Codigo de Barra"])}}
                             &nbsp;&nbsp;
-                            <button class="btn btn-primary"><i class="fa fa-signin"></i></button>
+                            <button class="btn btn-primary"><i class="fa fa-sign-in"></i></button>
                         </div>
 
                     </div>
