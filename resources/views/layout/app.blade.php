@@ -323,8 +323,12 @@
             Content body end
         ***********************************-->
 
-        <a href="#" class="chat-btn abrirVenda">
-            <i class="fa fa-shopping-cart fa-2x animate-zoom"></i> <span class="text-chat">Nova Venda</span>
+        <a href="#" class="venda-btn abrirVenda">
+            <i class="fa fa-plus-circle fa-2x animate-zoom"></i> <span class="text-chat"></span>
+        </a>
+
+        <a href="#" class="chat-btn listVenda">
+            <i class="fa fa-shopping-cart fa-2x animate-zoom"></i> <span class="text-chat">(0)</span>
         </a>
 
         <!--**********************************
@@ -354,7 +358,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Salvar</button>
