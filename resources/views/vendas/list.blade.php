@@ -11,7 +11,7 @@
                     <img src="{{asset('assets/images/neutro/no-photo-icon-22.png')}}" class="rounded-circle" alt="" style="width:60px; height:60px;">
                         <h5 class="mt-3 mb-1">{{$vendas->cliente->pessoa->nome}}</h5>
                         <p class="m-0">{{date('d-m-Y', strtotime($vendas->created_at))}} &nbsp;&nbsp; {{date('H:i', strtotime($vendas->created_at))}}</p>
-                         <a href="#" class="btn btn-sm btn-warning">Carregar Carrinho</a>
+                         <a href="/vendas/show/{{$vendas->id}}" class="btn btn-sm btn-warning">Carregar Carrinho</a>
                     </div>
                 </div>
             </div>
