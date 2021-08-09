@@ -438,7 +438,7 @@
                     dataType: "html",
                     success: function (response) {
                         if(response > 0){
-                            window.location.href = "{{route('carrinho', "+response+")}}";
+                            window.location.href = "{{route('carrinho')}}";
                         }
 
                     }

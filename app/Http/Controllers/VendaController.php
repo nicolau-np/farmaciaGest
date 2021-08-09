@@ -102,7 +102,7 @@ class VendaController extends Controller
      */
     public function show($id)
     {
-        //
+        echo "ID VENDA: ".$id;
     }
 
     /**
