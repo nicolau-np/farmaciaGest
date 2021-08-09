@@ -17,7 +17,7 @@
     <!-- Custom Stylesheet -->
     @endif
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{asset('assets/css/floating_button.css')}}"/>
 </head>
 
 <body class="@if($type=="login") h-100 @endif">
@@ -391,6 +391,7 @@
     <script src="{{asset('assets/plugins/chartist/js/chartist.min.js')}}"></script>
     <script src="{{asset('assets/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js')}}"></script>
     <script src="{{asset('assets/js/dashboard/dashboard-1.js')}}"></script>
+    <script src="{{asset('assets/js/floting_button.js')}}"></script>
     <script>
         $(document).ready(function(){
             $(".abrirVenda").click(function(){
