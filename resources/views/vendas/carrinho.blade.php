@@ -30,8 +30,13 @@
                 {{Form::close()}}
             </div>
             <hr/>
-            <div class="load_tabela">
+            <div class="tabela">
+                <table class="table table-striped table-bordered">
+                   
+                    <tbody class="load_tabela">
 
+                    </tbody>
+                </table>
             </div>
 
             </div>
@@ -43,25 +48,26 @@
 </div>
 <script>
     $(document).ready(function(){
-        $('.search-produto').keyup(function(){
+
+        $('.search-produto').keyup(function(e){
             e.preventDefault();
             var data = $('.form-search').serialize();
 
         if($(this).val()===""){
             $(".load_tabela").html('Nenhum resultado da pesquisa');
         }else{
-
-        $.ajax({
+            $.ajax({
           type: "post",
           url: "{{route('search_produto')}}",
           data: data,
           dataType: 'html',
           success: function(response) {
 
-            $(".resultado_pesquisa").html(response);
+            $(".load_tabela").html(response);
           }
         });
-    }
+
+        }
         });
     });
 </script>

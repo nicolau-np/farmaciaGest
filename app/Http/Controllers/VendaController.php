@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cliente;
 use App\Funcionario;
 use App\Pessoa;
+use App\Produto;
 use App\Venda;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -175,11 +176,12 @@ class VendaController extends Controller
 
     public function search_produto(Request $request){
         $request->validate([
-            'search'=> ['required', 'string']
+            'produto'=> ['required', 'string']
         ]);
 
+        $produtos = Produto::where('nome', 'LIKE', "%{$request->produto}%")->get();
         $data = [
-            
+            'getProdutos' => $produtos,
         ];
         return view('ajax.produtos', $data);
     }
