@@ -172,4 +172,15 @@ class VendaController extends Controller
         Session::put('id_venda', $venda->id);
         return redirect()->route('carrinho');
     }
+
+    public function search_produto(Request $request){
+        $request->validate([
+            'search'=> ['required', 'string']
+        ]);
+
+        $data = [
+            
+        ];
+        return view('ajax.produtos', $data);
+    }
 }
