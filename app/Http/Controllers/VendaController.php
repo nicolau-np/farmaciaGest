@@ -20,15 +20,15 @@ class VendaController extends Controller
     public function index()
     {
         $id_pessoa = Auth::user()->pessoa->id;
-        $funcionario = Funcionario::where(['id_pessoa'=>$id_pessoa])->first();
-        $vendas = Venda::where(['estado'=>"on", 'id_funcionario'=>$funcionario->id])->get();
+        $funcionario = Funcionario::where(['id_pessoa' => $id_pessoa])->first();
+        $vendas = Venda::where(['estado' => "on", 'id_funcionario' => $funcionario->id])->get();
         $data = [
             'title' => "Nova Venda",
             'menu' => "Vendas",
             'submenu' => "Listar",
             'type' => "vendas",
             'config' => null,
-            'getVendas'=>$vendas,
+            'getVendas' => $vendas,
         ];
         return view('vendas.list', $data);
     }
@@ -60,44 +60,42 @@ class VendaController extends Controller
     public function store(Request $request)
     {
         $id_pessoa = Auth::user()->pessoa->id;
-        $funcionario = Funcionario::where(['id_pessoa'=>$id_pessoa])->first();
+        $funcionario = Funcionario::where(['id_pessoa' => $id_pessoa])->first();
         $request->validate([
             'nome' => ['required', 'string', 'min:5', 'max:255'],
-            'telefone' =>['required', 'integer', 'min:1'],
+            'telefone' => ['required', 'integer', 'min:1'],
         ]);
 
         $data['pessoa'] = [
-            'nome'=> $request->nome,
-            'telefone'=>$request->telefone,
+            'nome' => $request->nome,
+            'telefone' => $request->telefone,
         ];
 
-        $data['cliente']=[
-            'id_pessoa'=> null,
-            'estado'=>"on",
+        $data['cliente'] = [
+            'id_pessoa' => null,
+            'estado' => "on",
         ];
 
         $data['venda'] = [
-            'id_funcionario'=>$funcionario->id,
-            'id_cliente'=>null,
-            'valor_total'=>0,
-            'estado'=>"on",
+            'id_funcionario' => $funcionario->id,
+            'id_cliente' => null,
+            'valor_total' => 0,
+            'estado' => "on",
         ];
 
         $pessoa = Pessoa::create($data['pessoa']);
-        if($pessoa){
+        if ($pessoa) {
             $data['cliente']['id_pessoa'] = $pessoa->id;
             $cliente = Cliente::create($data['cliente']);
-            if($cliente){
-                $data['venda']['id_cliente']=$cliente->id;
+            if ($cliente) {
+                $data['venda']['id_cliente'] = $cliente->id;
                 $venda = Venda::create($data['venda']);
-                if($venda){
+                if ($venda) {
                     Session::put('id_venda', $venda->id);
                     return $venda->id;
                 }
             }
         }
-
-
     }
 
     /**
@@ -108,7 +106,6 @@ class VendaController extends Controller
      */
     public function show($id)
     {
-
     }
 
     /**
@@ -145,16 +142,27 @@ class VendaController extends Controller
         //
     }
 
-    public function carrinho(){
-        if(!Session::has('id_venda')){
-         return back()->with(['error'=>"Deve criar uma nova venda"]);
+    public function carrinho()
+    {
+        if (!Session::has('id_venda')) {
+            return back()->with(['error' => "Deve criar uma nova venda"]);
         }
         $id_venda = Session::get('id_venda');
         $venda = Venda::find($id_venda);
-        if(!$venda){
-            return back()->with(['error'=>"Nao encontrou"]);
+        if (!$venda) {
+            return back()->with(['error' => "Nao encontrou"]);
         }
 
         echo $venda->id;
+    }
+
+    public function select($id)
+    {
+        $venda = Venda::find($id);
+        if(!$venda){
+            return back()->with(['error'=>"Novo encontrou"]);
+        }
+        Session::put('id_venda', $venda->id);
+        return redirect()->route('carrinho');
     }
 }
