@@ -38,4 +38,8 @@ Route::group(['prefix' =>"/estatistica"], function(){
     Route::get('/funcionarios', "FuncionarioController@estatistica");
 });
 
+Route::group(['prefix' =>"/vendas"], function(){
+    Route::get('/create', "ClienteController@edit");
+});
+
 Route::get('/sobre', "HomeController@sobre");
