@@ -8,8 +8,22 @@
             <div class="card-body">
                 {{Form::open(['method'=>"post", 'url'=>"", ])}}
                 <div class="row">
-                    <div class="col-md-12" style="text-align:center;">
-                        {{Form::text('produto', null, ['class'=>"form-control", 'placeholder'=>"Nome do produto"])}}
+                    <div class="col-md-5" style="text-align:center;">
+                        <div class="form-inline">
+                            {{Form::text('produto', null, ['class'=>"form-control", 'placeholder'=>"Pesquisar produto..."])}}
+                            &nbsp;&nbsp;
+                            <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-5" style="text-align:center;">
+                        <div class="form-inline">
+                            {{Form::text('codigo', null, ['class'=>"form-control", 'placeholder'=>"Codigo de Barra"])}}
+                            &nbsp;&nbsp;
+                            <button class="btn btn-primary"><i class="fa fa-signin"></i></button>
+                        </div>
+
                     </div>
                 </div>
                 {{Form::close()}}
