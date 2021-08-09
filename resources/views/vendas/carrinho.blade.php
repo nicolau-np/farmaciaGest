@@ -30,13 +30,42 @@
                 {{Form::close()}}
             </div>
             <hr/>
-            <div class="tabela">
-                <table class="table table-striped table-bordered">
-                   
-                    <tbody class="load_tabela">
+            <div class="card">
+                <div class="card-body">
 
-                    </tbody>
-                </table>
+                    <p class="text-muted"><code></code>
+                    </p>
+                    <div id="accordion-two" class="accordion">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1"><i class="fa" aria-hidden="true"></i> Pesquisa</h5>
+                            </div>
+                            <div id="collapseOne1" class="collapse show" data-parent="#accordion-two">
+                                <div class="card-body">
+                                    <div class="tabela">
+                                        <table class="table table-striped table-bordered">
+
+                                            <tbody class="load_tabela">
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2"><i class="fa" aria-hidden="true"></i> Carrinho</h5>
+                            </div>
+                            <div id="collapseTwo2" class="collapse" data-parent="#accordion-two">
+                                <div class="card-body">
+
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
 
             </div>
