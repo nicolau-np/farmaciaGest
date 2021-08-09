@@ -323,7 +323,9 @@
             Content body end
         ***********************************-->
 
-        
+        <a href="#" class="chat-btn abrirVenda">
+            <i class="fa fa-shopping-cart fa-2x animate-zoom"></i> <span class="text-chat">Nova Venda</span>
+        </a>
 
         <!--**********************************
             Footer start
