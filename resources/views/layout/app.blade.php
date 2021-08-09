@@ -358,7 +358,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-
+                    {{Form::open(['url' =>"/vendas/store", 'method'=>"post"])}}
+                    
+                    {{Form::close()}}
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Salvar</button>
