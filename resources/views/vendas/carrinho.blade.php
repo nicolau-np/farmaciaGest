@@ -7,7 +7,7 @@
         <div class="card border-warning">
             <div class="card-body">
                 <div class="form">
-                {{Form::open(['method'=>"post", 'url'=>"", ])}}
+                {{Form::open(['method'=>"post", 'url'=>"", 'class'=>"form-search"])}}
                 <div class="row">
                     <div class="col-md-5" style="text-align:center;">
                         <div class="form-inline">
@@ -44,8 +44,24 @@
 <script>
     $(document).ready(function(){
         $('.search-produto').keyup(function(){
-            var search = $(this).val();
-            $('.load_tabela').text(search);
+            e.preventDefault();
+            var data = $('.form-search').serialize();
+
+        if($(this).val()===""){
+            $(".load_tabela").html('Nenhum resultado da pesquisa');
+        }else{
+
+        $.ajax({
+          type: "post",
+          url: "{{route('search_produto')}}",
+          data: data,
+          dataType: 'html',
+          success: function(response) {
+
+            $(".resultado_pesquisa").html(response);
+          }
+        });
+    }
         });
     });
 </script>
