@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cliente;
 use App\Funcionario;
+use App\ItemVenda;
 use App\Pessoa;
 use App\Produto;
 use App\Venda;
@@ -167,16 +168,17 @@ class VendaController extends Controller
     public function select($id)
     {
         $venda = Venda::find($id);
-        if(!$venda){
-            return back()->with(['error'=>"Novo encontrou"]);
+        if (!$venda) {
+            return back()->with(['error' => "Novo encontrou"]);
         }
         Session::put('id_venda', $venda->id);
         return redirect()->route('carrinho');
     }
 
-    public function search_produto(Request $request){
+    public function search_produto(Request $request)
+    {
         $request->validate([
-            'produto'=> ['required', 'string']
+            'produto' => ['required', 'string']
         ]);
 
         $produtos = Produto::where('nome', 'LIKE', "%{$request->produto}%")->get();
@@ -186,7 +188,8 @@ class VendaController extends Controller
         return view('ajax.produtos', $data);
     }
 
-    public function add($id){
+    public function add($id_produto)
+    {
         if (!Session::has('id_venda')) {
             return back()->with(['error' => "Deve criar uma nova venda"]);
         }
@@ -196,11 +199,26 @@ class VendaController extends Controller
             return back()->with(['error' => "Nao encontrou"]);
         }
 
-        $produto = Produto::find($id);
-        if(!$produto){
+        $produto = Produto::find($id_produto);
+        if (!$produto) {
             return back()->with(['error' => "Nao encontrou"]);
         }
 
-        
+        $data['item_venda'] = [
+            'id_venda'=>$id_venda,
+            'id_produto'=>$id_produto,
+            'quantidade'=>1,
+            'preco_unitario'=>$produto->valor_venda,
+            'estado'=> "on",
+        ];
+        $item_venda = ItemVenda::where(['id_venda' => $venda, 'id_produto' => $id_produto])->first();
+        if ($item_venda) {
+            //ja existe este produto
+        } else {
+            //deve adicionar o produto
+            if(ItemVenda::create($data['item_venda'])){
+                return back()->with(['success' => "Adicionado ao carrinho"]);
+            }
+        }
     }
 }
