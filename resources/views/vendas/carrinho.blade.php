@@ -87,17 +87,27 @@
                                             </thead>
                                             <tbody>
                                                 <?php
+                                                $total = 0;
                                                 $i=0;
                                                 foreach ($getItem_vendas as $item_venda){
                                                     $i++;
+                                                    $total = ($item_venda->quantidade * $item_venda->preco_unitario);
                                                     ?>
                                                 <tr>
                                                 <td>{{$i}}</td>
                                                 <td>{{$item_venda->produto->nome}}</td>
-                                                <td>{{$item_venda->quantidade}}</td>
+                                                <td>
+                                                <a href="/vendas/carrinho/decrement/{{$item_venda->id_produto}}">-</a>
+                                                    &nbsp;&nbsp;
+                                                    {{$item_venda->quantidade}}
+                                                    &nbsp;&nbsp;
+                                                    <a href="/vendas/carrinho/increment/{{$item_venda->id_produto}}">+</a>
+                                                </td>
                                                 <td>{{number_format($item_venda->preco_unitario,2,',','.')}}</td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{number_format($total,2,',','.')}}</td>
+                                                <td>
+                                                   <a href="/vendas/carrinho/delete/{{$item_venda->id_produto}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                                </td>
                                                 </tr>
                                             <?php }?>
                                             </tbody>
