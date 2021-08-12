@@ -6,7 +6,7 @@
             <div class="card-body">
                 <h3 class="card-title text-white">Produtos</h3>
                 <div class="d-inline-block">
-                    <h2 class="text-white">4565</h2>
+                <h2 class="text-white">{{$getProdutos->count()}}</h2>
                     <p class="text-white mb-0">Jan - March 2019</p>
                 </div>
                 <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
@@ -18,7 +18,7 @@
             <div class="card-body">
                 <h3 class="card-title text-white">Funcionários</h3>
                 <div class="d-inline-block">
-                    <h2 class="text-white">$ 8541</h2>
+                    <h2 class="text-white">{{$getFuncionarios->count()}}</h2>
                     <p class="text-white mb-0">Jan - March 2019</p>
                 </div>
                 <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
@@ -30,7 +30,7 @@
             <div class="card-body">
                 <h3 class="card-title text-white">Clientes</h3>
                 <div class="d-inline-block">
-                    <h2 class="text-white">4565</h2>
+                    <h2 class="text-white">{{$getClientes->count()}}</h2>
                     <p class="text-white mb-0">Jan - March 2019</p>
                 </div>
                 <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
