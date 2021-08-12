@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cliente;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -13,7 +14,16 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //
+        $clientes = Cliente::where('estado', '!=', "delete")->paginate(8);
+        $data = [
+            'title' => "Clientes",
+            'menu' => "Clientes",
+            'submenu' => "Listar",
+            'type' => "clientes",
+            'config' => null,
+            'getClientes' => $clientes,
+        ];
+        return view('clientes.list', $data);
     }
 
     /**
