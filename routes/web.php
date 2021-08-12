@@ -48,6 +48,9 @@ Route::group(['prefix' =>"/vendas"], function(){
     Route::group(['prefix' =>"carrinho"], function(){
         Route::get('/', "VendaController@carrinho")->name('carrinho');
         Route::get('/add/{id}', "VendaController@add");
+        Route::get('/decrement/{id}', "VendaController@decrement");
+        Route::get('/increment/{id}', "VendaController@increment");
+        Route::get('/delete/{id}', "VendaController@delete");
     });
 });
 

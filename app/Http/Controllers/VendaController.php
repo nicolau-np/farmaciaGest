@@ -231,4 +231,16 @@ class VendaController extends Controller
             }
         }
     }
+
+    public function increment($id_produto){
+
+    }
+
+    public function decrement($id_produto){
+
+    }
+
+    public function delete($id_produto){
+
+    }
 }
