@@ -187,6 +187,20 @@ class VendaController extends Controller
     }
 
     public function add($id){
+        if (!Session::has('id_venda')) {
+            return back()->with(['error' => "Deve criar uma nova venda"]);
+        }
+        $id_venda = Session::get('id_venda');
+        $venda = Venda::find($id_venda);
+        if (!$venda) {
+            return back()->with(['error' => "Nao encontrou"]);
+        }
+
+        $produto = Produto::find($id);
+        if(!$produto){
+            return back()->with(['error' => "Nao encontrou"]);
+        }
+
         
     }
 }
