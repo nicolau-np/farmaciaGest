@@ -155,7 +155,7 @@ class VendaController extends Controller
             return back()->with(['error' => "Nao encontrou"]);
         }
 
-        $item_vendas = ItemVenda::where(['id_venda'=>$id_venda])->get();
+        $item_vendas = ItemVenda::where(['id_venda' => $id_venda])->get();
 
         $data = [
             'title' => "Nova Venda",
@@ -163,7 +163,7 @@ class VendaController extends Controller
             'submenu' => "Carrinho",
             'type' => "vendas",
             'config' => null,
-            'getItem_vendas'=>$item_vendas,
+            'getItem_vendas' => $item_vendas,
         ];
         return view('vendas.carrinho', $data);
     }
@@ -232,15 +232,34 @@ class VendaController extends Controller
         }
     }
 
-    public function increment($id_produto){
+    public function increment($id_item_venda)
+    {
+        if (!Session::has('id_venda')) {
+            return back()->with(['error' => "Deve criar uma nova venda"]);
+        }
+        $id_venda = Session::get('id_venda');
+        $venda = Venda::find($id_venda);
+        if (!$venda) {
+            return back()->with(['error' => "Nao encontrou"]);
+        }
 
+        $item_venda = ItemVenda::find($id_item_venda);
+        if (!$item_venda) {
+            return back()->with(['error' => "Nao encontrou"]);
+        }
+
+        if (Produto::find($item_venda->id_produto)->decrement('quantidade', 1)) {
+            if (ItemVenda::find($id_item_venda)->increment('quantidade', 1)) {
+                return back()->with(['success' => "Nova Quantidade " . $item_venda->produto->nome]);
+            }
+        }
     }
 
-    public function decrement($id_produto){
-
+    public function decrement($id_produto)
+    {
     }
 
-    public function delete($id_produto){
-
+    public function delete($id_produto)
+    {
     }
 }

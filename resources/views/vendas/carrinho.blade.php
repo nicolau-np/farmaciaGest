@@ -97,16 +97,16 @@
                                                 <td>{{$i}}</td>
                                                 <td>{{$item_venda->produto->nome}}</td>
                                                 <td>
-                                                <a href="/vendas/carrinho/decrement/{{$item_venda->id_produto}}">-</a>
+                                                <a href="/vendas/carrinho/decrement/{{$item_venda->id}}">-</a>
                                                     &nbsp;&nbsp;
                                                     {{$item_venda->quantidade}}
                                                     &nbsp;&nbsp;
-                                                    <a href="/vendas/carrinho/increment/{{$item_venda->id_produto}}">+</a>
+                                                    <a href="/vendas/carrinho/increment/{{$item_venda->id}}">+</a>
                                                 </td>
                                                 <td>{{number_format($item_venda->preco_unitario,2,',','.')}}</td>
                                                 <td>{{number_format($total,2,',','.')}}</td>
                                                 <td>
-                                                   <a href="/vendas/carrinho/delete/{{$item_venda->id_produto}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                                   <a href="/vendas/carrinho/delete/{{$item_venda->id}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                                 </td>
                                                 </tr>
                                             <?php }?>
