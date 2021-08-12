@@ -155,12 +155,15 @@ class VendaController extends Controller
             return back()->with(['error' => "Nao encontrou"]);
         }
 
+        $item_vendas = ItemVenda::where(['id_venda'=>$id_venda])->get();
+
         $data = [
             'title' => "Nova Venda",
             'menu' => "Vendas",
             'submenu' => "Carrinho",
             'type' => "vendas",
             'config' => null,
+            'getItem_vendas'=>$item_vendas,
         ];
         return view('vendas.carrinho', $data);
     }

@@ -8,7 +8,7 @@
         <div class="card border-warning">
             <div class="card-body">
                 <div class="form">
-                    
+
                     @if (session('error'))
                     <div class="alert bg-danger" style="color:white" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em> {{__(session('error'))}} <a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
                     @endif
@@ -73,6 +73,36 @@
                             </div>
                             <div id="collapseTwo2" class="collapse show" data-parent="#accordion-two">
                                 <div class="card-body">
+                                    <div class="tabela">
+                                        <table class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Produto</th>
+                                                    <th>Quant.</th>
+                                                    <th>Preço Uni.</th>
+                                                    <th>Total</th>
+                                                    <th>Operações</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $i=0;
+                                                foreach ($getItem_vendas as $item_venda){
+                                                    $i++;
+                                                    ?>
+                                                <tr>
+                                                <td>{{$i}}</td>
+                                                <td>{{$item_venda->produto->nome}}</td>
+                                                <td>{{$item_venda->quantidade}}</td>
+                                                <td>{{number_format($item_venda->preco_unitario,2,',','.')}}</td>
+                                                <td></td>
+                                                <td></td>
+                                                </tr>
+                                            <?php }?>
+                                            </tbody>
+                                        </table>
+                                    </div>
 
                                 </div>
                             </div>
