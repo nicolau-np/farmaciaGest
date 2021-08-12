@@ -205,19 +205,21 @@ class VendaController extends Controller
         }
 
         $data['item_venda'] = [
-            'id_venda'=>$id_venda,
-            'id_produto'=>$id_produto,
-            'quantidade'=>1,
-            'preco_unitario'=>$produto->valor_venda,
-            'estado'=> "on",
+            'id_venda' => $id_venda,
+            'id_produto' => $id_produto,
+            'quantidade' => 1,
+            'preco_unitario' => $produto->valor_venda,
+            'estado' => "on",
         ];
         $item_venda = ItemVenda::where(['id_venda' => $id_venda, 'id_produto' => $id_produto])->first();
         if ($item_venda) {
             //ja existe este produto
         } else {
             //deve adicionar o produto
-            if(ItemVenda::create($data['item_venda'])){
-                return back()->with(['success' => "Adicionado ao carrinho"]);
+            if (Produto::find($id_produto)->decrement('quantidade', 1)) {
+                if (ItemVenda::create($data['item_venda'])) {
+                    return back()->with(['success' => "Adicionado ao carrinho"]);
+                }
             }
         }
     }
