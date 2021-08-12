@@ -207,6 +207,10 @@ class VendaController extends Controller
             return back()->with(['error' => "Nao encontrou"]);
         }
 
+        if($produto->quantidade==0){
+            return back()->with(['info'=>"Produto esgotou"]);
+        }
+
         $data['item_venda'] = [
             'id_venda' => $id_venda,
             'id_produto' => $id_produto,
@@ -248,6 +252,11 @@ class VendaController extends Controller
             return back()->with(['error' => "Nao encontrou"]);
         }
 
+        $produto = Produto::find($item_venda->id_produto);
+        if($produto->quantidade==0){
+            return back()->with(['info'=>"Produto esgotou"]);
+        }
+
         if (Produto::find($item_venda->id_produto)->decrement('quantidade', 1)) {
             if (ItemVenda::find($id_item_venda)->increment('quantidade', 1)) {
                 return back()->with(['success' => "Nova Quantidade " . $item_venda->produto->nome]);
@@ -255,8 +264,31 @@ class VendaController extends Controller
         }
     }
 
-    public function decrement($id_produto)
+    public function decrement($id_item_venda)
     {
+        if (!Session::has('id_venda')) {
+            return back()->with(['error' => "Deve criar uma nova venda"]);
+        }
+        $id_venda = Session::get('id_venda');
+        $venda = Venda::find($id_venda);
+        if (!$venda) {
+            return back()->with(['error' => "Nao encontrou"]);
+        }
+
+        $item_venda = ItemVenda::find($id_item_venda);
+        if (!$item_venda) {
+            return back()->with(['error' => "Nao encontrou"]);
+        }
+
+        if($item_venda->quantidade==1){
+            return back()->with(['info'=>"Não deve reduzir mais a quantidade"]);
+        }
+
+        if (Produto::find($item_venda->id_produto)->increment('quantidade', 1)) {
+            if (ItemVenda::find($id_item_venda)->decrement('quantidade', 1)) {
+                return back()->with(['success' => "Nova Quantidade " . $item_venda->produto->nome]);
+            }
+        }
     }
 
     public function delete($id_produto)
