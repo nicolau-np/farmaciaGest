@@ -211,7 +211,7 @@ class VendaController extends Controller
             'preco_unitario'=>$produto->valor_venda,
             'estado'=> "on",
         ];
-        $item_venda = ItemVenda::where(['id_venda' => $venda, 'id_produto' => $id_produto])->first();
+        $item_venda = ItemVenda::where(['id_venda' => $id_venda, 'id_produto' => $id_produto])->first();
         if ($item_venda) {
             //ja existe este produto
         } else {
