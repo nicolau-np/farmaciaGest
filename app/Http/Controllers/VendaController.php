@@ -185,4 +185,8 @@ class VendaController extends Controller
         ];
         return view('ajax.produtos', $data);
     }
+
+    public function add($id){
+        
+    }
 }

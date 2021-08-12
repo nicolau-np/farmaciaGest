@@ -43,9 +43,12 @@ Route::group(['prefix' =>"/vendas"], function(){
     Route::get('/', "VendaController@index");
     Route::get('/create', "VendaController@create");
     Route::post('/store', "VendaController@store")->name('save_venda');
-    Route::get('/carrinho', "VendaController@carrinho")->name('carrinho');
     Route::get('/select/{id}', "VendaController@select")->name('select');
     Route::post('/search_produto', "VendaController@search_produto")->name('search_produto');
+    Route::group(['prefix' =>"carrinho"], function(){
+        Route::get('/', "VendaController@carrinho")->name('carrinho');
+        Route::get('/add/{id}', "VendaController@add");
+    });
 });
 
 Route::get('/sobre', "HomeController@sobre");
