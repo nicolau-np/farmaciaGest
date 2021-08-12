@@ -214,6 +214,11 @@ class VendaController extends Controller
         $item_venda = ItemVenda::where(['id_venda' => $id_venda, 'id_produto' => $id_produto])->first();
         if ($item_venda) {
             //ja existe este produto
+            if (Produto::find($id_produto)->decrement('quantidade', 1)) {
+                if (ItemVenda::where(['id_venda' => $id_venda, 'id_produto' => $id_produto])->increment('quantidade', 1)) {
+                    return back()->with(['success' => "Adicionado ao carrinho"]);
+                }
+            }
         } else {
             //deve adicionar o produto
             if (Produto::find($id_produto)->decrement('quantidade', 1)) {
