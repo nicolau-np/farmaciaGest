@@ -7,7 +7,7 @@
 <td>{{number_format($produtos->valor_venda,2,',','.')}}</td>
 <td>{{$produtos->data_caducidade}}</td>
 <td>
-    <a href="#" class="btn btn-primary btn-sm">Adicionar</a>
+<a href="/vendas/carrinho/add/{{$produtos->id}}" class="btn btn-primary btn-sm">Adicionar</a>
 </td>
 </tr>
 @endforeach

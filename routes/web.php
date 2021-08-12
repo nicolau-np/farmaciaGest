@@ -1,8 +1,6 @@
 <?php
 
-use App\Funcionario;
-use App\Pessoa;
-use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Route;
 
 /*
