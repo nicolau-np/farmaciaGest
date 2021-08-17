@@ -22,6 +22,13 @@ if($type!="login"){
     <link rel="stylesheet" href="{{asset('assets/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css')}}">
     <!-- Custom Stylesheet -->
     @endif
+    @if ($type=="grafico")
+    <script src="{{asset('assets/highcharts/highcharts.js')}}"></script>
+    <script src="{{asset('assets/highcharts/modules/variable-pie.js')}}"></script>
+    <script src="{{asset('assets/highcharts/modules/exporting.js')}}"></script>
+    <script src="{{asset('assets/highcharts/modules/export-data.js')}}"></script>
+    <script src="{{asset('assets/highcharts/modules/accessibility.js')}}"></script>
+    @endif
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('assets/css/floating_button.css')}}"/>
     <script src="{{asset('assets/js/jquery.js')}}"></script>
@@ -431,6 +438,7 @@ if($type!="login"){
     <script src="{{asset('assets/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js')}}"></script>
     <script src="{{asset('assets/js/dashboard/dashboard-1.js')}}"></script>
     <script src="{{asset('assets/js/floting_button.js')}}"></script>
+
     <script>
         $(document).ready(function(){
             $(".abrirVenda").click(function(){

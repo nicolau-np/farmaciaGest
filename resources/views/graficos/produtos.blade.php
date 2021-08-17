@@ -6,87 +6,75 @@
             <div class="card-body">
                 <div class="card-title">
                     <h4 class="submenu">{{$submenu}}</h4>
-                    <h4 class="link"><a href="/fabricantes/" class="btn btn-warning btn-sm"><i class="fa fa-search"></i> Listar</a></h4>
+
                 </div>
                 <br/>
                 <div class="form">
-                    @if (session('error'))
-                    <div class="alert bg-danger" style="color:white" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em> {{__(session('error'))}} <a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
-                    @endif
 
-                    @if (session('success'))
-                    <div class="alert bg-success" style="color:white" role="alert"><em class="fa fa-lg fa-check">&nbsp;</em> {{session('success')}} <a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
-                    @endif
+                    <figure class="highcharts-figure">
+                        <div id="container"></div>
+                        <p class="highcharts-description" style="text-align: center;">
+                            Gráfico ilustrando os produdos mais vendidos
+                            e que têm mais saídas na farmácia.
+                        </p>
+                    </figure>
 
-                    @if (session('info'))
-                    <div class="alert bg-info" style="color:white" role="alert"><em class="fa fa-lg fa-check">&nbsp;</em> {{session('info')}} <a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
-                    @endif
 
-                    {{Form::open(['url' =>"/fabricantes/", 'method'=>"post", 'file'=>"true"])}}
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                {{Form::label('nome', "Nome do fabricante")}} <span class="text-danger">*</span>
-                                {{Form::text('nome', null, ['class'=>"form-control", 'placeholder'=>"Nome do fabricante"])}}
-                                @if($errors->has('nome'))
-                                <span class="text-danger">{{$errors->first('nome')}}</span>
-                                @endif
-                            </div>
-                        </div>
 
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                {{Form::label('endereco', "Endereço")}}
-                                {{Form::text('endereco', null, ['class'=>"form-control", 'placeholder'=>"Endereço"])}}
-                                @if($errors->has('endereco'))
-                                <span class="text-danger">{{$errors->first('endereco')}}</span>
-                                @endif
-                            </div>
-                        </div>
 
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                {{Form::label('telefone', "Telefone")}}
-                                {{Form::number('telefone', null, ['class'=>"form-control", 'placeholder'=>"Telefone"])}}
-                                @if($errors->has('telefone'))
-                                <span class="text-danger">{{$errors->first('telefone')}}</span>
-                                @endif
-                            </div>
-                        </div>
+                            <script type="text/javascript">
+                    Highcharts.chart('container', {
+                        chart: {
+                            type: 'variablepie'
+                        },
+                        title: {
+                            text: 'Gráfico dos produtos mais vendidos'
+                        },
+                        tooltip: {
+                            headerFormat: '',
+                            pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {point.name}</b><br/>' +
+                                'Area (square km): <b>{point.y}</b><br/>' +
+                                'Population density (people per square km): <b>{point.z}</b><br/>'
+                        },
+                        series: [{
+                            minPointSize: 10,
+                            innerSize: '20%',
+                            zMin: 0,
+                            name: 'countries',
+                            data: [{
+                                name: 'Spain',
+                                y: 505370,
+                                z: 92.9
+                            }, {
+                                name: 'France',
+                                y: 551500,
+                                z: 118.7
+                            }, {
+                                name: 'Poland',
+                                y: 312685,
+                                z: 124.6
+                            }, {
+                                name: 'Czech Republic',
+                                y: 78867,
+                                z: 137.5
+                            }, {
+                                name: 'Italy',
+                                y: 301340,
+                                z: 201.8
+                            }, {
+                                name: 'Switzerland',
+                                y: 41277,
+                                z: 214.5
+                            }, {
+                                name: 'Germany',
+                                y: 357022,
+                                z: 235.6
+                            }]
+                        }]
+                    });
 
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                {{Form::label('email', "E-mail")}}
-                                {{Form::email('email', null, ['class'=>"form-control", 'placeholder'=>"E-mail"])}}
-                                @if($errors->has('email'))
-                                <span class="text-danger">{{$errors->first('email')}}</span>
-                                @endif
-                            </div>
-                        </div>
+                            </script>
 
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                {{Form::label('estado', "Estado")}} <span class="text-danger">*</span>
-                                {{Form::select('estado',  [
-                                    'on'=>"on",
-                                    'off'=>"off",
-                                ], null, ['class'=>"form-control", 'placeholder'=>"Estado"])}}
-                                @if($errors->has('estado'))
-                                <span class="text-danger">{{$errors->first('estado')}}</span>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary"> <i class="fa fa-check"></i> Salvar</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{Form::close()}}
                 </div>
             </div>
         </div>
