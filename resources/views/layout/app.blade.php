@@ -1,8 +1,7 @@
 <?php
 use App\Http\Controllers\StaticController;
 if($type!="login"){
-
-$getVenda = StaticController::getVendasOn();
+    $getVenda = StaticController::getVendasOn();
 }
 ?>
 <!DOCTYPE html>
@@ -249,13 +248,13 @@ $getVenda = StaticController::getVendasOn();
                             <i class="fa fa-home menu-icon"></i><span class="nav-text">Home</span>
                         </a>
                     </li>
-
+                    @if(Auth::user()->acesso!="user")
                     <li>
                         <a href="/funcionarios" aria-expanded="false">
                             <i class="fa fa-user menu-icon"></i><span class="nav-text">Funcionário</span>
                         </a>
                     </li>
-
+                    @endif
                     <li>
                         <a href="/clientes" aria-expanded="false">
                             <i class="fa fa-group menu-icon"></i><span class="nav-text">Clientes</span>
@@ -278,7 +277,7 @@ $getVenda = StaticController::getVendasOn();
                         </ul>
                     </li>
 
-
+                    @if(Auth::user()->acesso!="user")
                     <li class="nav-label">Extras</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -289,6 +288,7 @@ $getVenda = StaticController::getVendasOn();
                             <li><a href="/estatistica/funcionarios">Funcionários</a></li>
                         </ul>
                     </li>
+                    @endif
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="fa fa-tablet menu-icon"></i><span class="nav-text">Aplicação</span>
