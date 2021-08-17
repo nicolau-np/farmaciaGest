@@ -126,7 +126,27 @@
                                 <div class="card-body">
                                     <div class="form">
                                         {{Form::open(['url'=>"", 'method'=>"post",])}}
-                                        
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    {{Form::label('nome', "Nome do Cliente")}}
+                                                    {{Form::text('nome', null, ['class'=>"form-control", 'placeholder'=>"Nome do cliente"])}}
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    {{Form::label('telefone', "Telefone")}}
+                                                    {{Form::number('telefone', null, ['class'=>"form-control", 'placeholder'=>"Nº de Telefone"])}}
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    {{Form::submit("Imprimir", ['class'=>"btn btn-primary"])}}
+                                                </div>
+                                            </div>
+                                        </div>
                                         {{Form::close()}}
                                     </div>
                                 </div>
