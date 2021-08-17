@@ -291,7 +291,26 @@ class VendaController extends Controller
         }
     }
 
-    public function delete($id_produto)
+    public function delete($id_item_venda)
     {
+        if (!Session::has('id_venda')) {
+            return back()->with(['error' => "Deve criar uma nova venda"]);
+        }
+        $id_venda = Session::get('id_venda');
+        $venda = Venda::find($id_venda);
+        if (!$venda) {
+            return back()->with(['error' => "Nao encontrou"]);
+        }
+
+        $item_venda = ItemVenda::find($id_item_venda);
+        if (!$item_venda) {
+            return back()->with(['error' => "Nao encontrou"]);
+        }
+
+        if(Produto::find($item_venda->id_produto)->increment('quantidade', $item_venda->quantidade)){
+            if(ItemVenda::find($item_venda->id)->delete()){
+                
+            }
+        }
     }
 }
