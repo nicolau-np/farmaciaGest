@@ -8,7 +8,7 @@
                 <div class="card-title">
                     <h4 class="submenu">{{$submenu}}</h4>
                     <h4 class="link">
-                        <a href="/produtos/inventario/" class="btn btn-primary btn-sm"><i class="fa fa-file"></i> Inventário</a>
+                        <a href="/produt/inventario/" class="btn btn-primary btn-sm"><i class="fa fa-file"></i> Inventário</a>
                         <a href="/produtos/create/" class="btn btn-success btn-sm"><i class="fa fa-add"></i> Novo</a>
                     </h4>
                 </div>

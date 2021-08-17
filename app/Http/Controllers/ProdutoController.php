@@ -206,5 +206,7 @@ class ProdutoController extends Controller
         $pdf = PDF::loadView('report.inventario', $data);
 
         return $pdf->stream('Inventario -' . date('Y') . '.pdf');
+
+
     }
 }

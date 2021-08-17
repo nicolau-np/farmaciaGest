@@ -105,13 +105,14 @@
                 <th>Descrição</th>
                 <th>P. Unitário</th>
                 <th>Quant.</th>
+                <th>Estado</th>
             </tr>
         </thead>
         <tbody>
             <?php
-
+                $i = 0;
                 foreach ($getProdutos as $produtos){
-
+                $i++;
             ?>
              <tr>
              <td>{{$i}}</td>
