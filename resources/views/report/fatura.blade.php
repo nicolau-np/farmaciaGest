@@ -52,19 +52,25 @@
     text-align: center;
 }
 
-.total{
-    display: block;
-    float: right;
-    padding: 4px;
-    border: 1px solid #333;
-}
-
 .data{
     padding: 4px;
     border: 1px solid #333;
     width: 28.3%;
 }
+.dados_cliente{
+    color:aqua;
+    font-weight: bold;
+}
+.total_geral{
+    color:aqua;
+    font-weight: bold;
+    font-size: 15px;
 
+    display: block;
+    float: right;
+    padding: 4px;
+    border: 1px solid #333;
+}
     </style>
 </head>
 <body>
@@ -88,6 +94,12 @@
        Factura Nº 00{{$getVenda->id}}
     </div>
 </div>
+<div class="proprietario">
+    <div class="comp">
+    Nome do Cliente: <span class="dados_cliente">{{$getVenda->cliente->pessoa->nome}}</span><br/>
+    Telefone: <span class="dados_cliente">{{$getVenda->cliente->pessoa->telefone}}</span>
+    </div>
+</div>
     <br/><br/><br/>
         <div class="tabela">
            <table class="table" border=1 cellspacing=0 cellpadding=2 bordercolor="#000">
@@ -95,6 +107,7 @@
             <tr>
                 <th>#</th>
                 <th>Produto</th>
+                <th>Descrição</th>
                 <th>P. Unitário</th>
                 <th>Quant.</th>
                 <th>Total</th>
@@ -113,9 +126,10 @@
              <tr>
              <td>{{$i}}</td>
              <td>{{$item_venda->produto->nome}}</td>
+             <td>{{$item_venda->produto->descricao}}</td>
              <td>{{number_format($item_venda->preco_unitario,2,',','.')}} Akz</td>
              <td>{{$item_venda->quantidade}}</td>
-             <td>{{number_format($item_venda->valor,2,',','.')}} Akz</td>
+             <td>{{number_format($total,2,',','.')}} Akz</td>
             </tr>
         <?php }
          ?>
@@ -123,11 +137,11 @@
     </table>
     </div>
 
-    <div class="total">
-        Total Pago: {{number_format($getNotaVenda->valor_total, 2, ',','.')}} Akz
+    <div class="total_geral">
+        Total Pago: {{number_format($total_geral, 2, ',','.')}} Akz
 
     </div>
-<div class="data">Data: {{ date('d-m-Y', strtotime($getNotaVenda->created_at))}} {{ date('H:i:s', strtotime($getNotaVenda->created_at))}}</div>
+<div class="data">Data: {{ date('d-m-Y', strtotime($getVenda->created_at))}} {{ date('H:i:s', strtotime($getVenda->created_at))}}</div>
 <br/>
 <br/>
 <div class="obs">

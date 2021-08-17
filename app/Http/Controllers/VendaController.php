@@ -322,6 +322,7 @@ class VendaController extends Controller
             return back()->with(['error' => "Nao encontrou"]);
         }
         $data = [
+            'title'=>$venda->cliente->pessoa->nome,
             'getVenda'=>$venda,
         ];
         $pdf = PDF::loadView('report.fatura', $data);
