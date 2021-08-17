@@ -47,10 +47,11 @@ Route::group(['prefix' =>"/vendas"], function(){
     Route::post('/search_produto', "VendaController@search_produto")->name('search_produto');
     Route::group(['prefix' =>"carrinho"], function(){
         Route::get('/', "VendaController@carrinho")->name('carrinho');
-        Route::get('/add/{id}', "VendaController@add");
-        Route::get('/decrement/{id}', "VendaController@decrement");
-        Route::get('/increment/{id}', "VendaController@increment");
-        Route::get('/delete/{id}', "VendaController@delete");
+        Route::get('/add/{id_produto}', "VendaController@add");
+        Route::get('/decrement/{id_item_venda}', "VendaController@decrement");
+        Route::get('/increment/{id_item_venda}', "VendaController@increment");
+        Route::get('/delete/{id_item_venda}', "VendaController@delete");
+        Route::get('/fatura/{id_venda}', "VendaController@fatura");
     });
 });
 

@@ -8,6 +8,7 @@ use App\ItemVenda;
 use App\Pessoa;
 use App\Produto;
 use App\Venda;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -313,5 +314,17 @@ class VendaController extends Controller
                 return back()->with(['success'=>"Produto eliminado do carrinho"]);
             }
         }
+    }
+
+    public function fatura($id_venda){
+        $venda = Venda::find($id_venda);
+        if(!$venda){
+            return back()->with(['error' => "Nao encontrou"]);
+        }
+        $data = [
+            'getVenda'=>$venda,
+        ];
+        $pdf = PDF::loadView('report.fatura', $data);
+        return $pdf->stream('orcamento -' . date('Y') . '.pdf');
     }
 }
