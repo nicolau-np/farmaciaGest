@@ -22,8 +22,12 @@
                     <div class="alert bg-info" style="color:white" role="alert"><em class="fa fa-lg fa-check">&nbsp;</em> {{session('info')}} <a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
                     @endif
 
-                    {{Form::open(['url' =>"/func/store_user/{$getPessoa->id}", 'method'=>"put", 'enctype'=>"multipart/form-data"])}}
+                    {{Form::open(['url' =>"/func/store_user/{$getFuncionario->id_pessoa}", 'method'=>"put", 'enctype'=>"multipart/form-data"])}}
                     <div class="row">
+                        <div class="col-md-12">
+                            <span style="font-weight:bold;">Nome Funcionario:</span> {{$getFuncionario->pessoa->nome}}
+                        </div>
+                        <br/>
                         <div class="col-md-4">
                             <div class="form-group">
                                 {{Form::label('email', "E-mail")}} <span class="text-danger">*</span>

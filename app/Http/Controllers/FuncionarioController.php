@@ -215,15 +215,29 @@ class FuncionarioController extends Controller
         }
     }
 
-    public function create_user(){
+    public function create_user($id_funcionario){
+        $funcionario = Funcionario::find($id_funcionario);
+        if(!$funcionario){
+            return back()->with(['error' => "Nao encontrou"]);
+        }
         $data = [
             'title' => "Funcionarios",
             'menu' => "Funcionarios",
             'submenu' => "User",
             'type' => "Funcionarios",
             'config' => null,
+            'getFuncionario' =>$funcionario,
         ];
 
         return view('funcionarios.create_user', $data);
+    }
+
+    public function store_user($id_pessoa){
+        $pessoa = Pessoa::find($id_pessoa);
+        if(!$pessoa){
+            return back()->with(['error' => "Nao encontrou"]);
+        }
+
+        
     }
 }

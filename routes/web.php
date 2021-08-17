@@ -26,6 +26,7 @@ Route::get('/', "HomeController@index")->middleware('auth')->name('home');
 
 Route::resource('/funcionarios', "FuncionarioController");
 Route::get('/func/add/{id_funcionario}', "FuncionarioController@create_user");
+Route::put('/func/store_user/{id_pessoa}', "FuncionarioController@store_user");
 
 Route::resource('/clientes', "ClienteController");
 
