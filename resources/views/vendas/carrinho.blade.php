@@ -118,6 +118,20 @@
                             </div>
                         </div>
 
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne3" aria-expanded="true" aria-controls="collapseOne3"><i class="fa" aria-hidden="true"></i> Impressão</h5>
+                            </div>
+                            <div id="collapseOne3" class="collapse show" data-parent="#accordion-two">
+                                <div class="card-body">
+                                    <div class="form">
+                                        {{Form::open(['url'=>"", 'method'=>"post",])}}
+                                        
+                                        {{Form::close()}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
