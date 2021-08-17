@@ -87,11 +87,13 @@
                                             </thead>
                                             <tbody>
                                                 <?php
+                                                $total_geral = 0;
                                                 $total = 0;
                                                 $i=0;
                                                 foreach ($getItem_vendas as $item_venda){
                                                     $i++;
                                                     $total = ($item_venda->quantidade * $item_venda->preco_unitario);
+                                                    $total_geral = $total_geral + $total;
                                                     ?>
                                                 <tr>
                                                 <td>{{$i}}</td>
@@ -120,7 +122,7 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne3" aria-expanded="true" aria-controls="collapseOne3"><i class="fa" aria-hidden="true"></i> Impressão</h5>
+                            <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne3" aria-expanded="true" aria-controls="collapseOne3"><i class="fa" aria-hidden="true"></i> Total Geral: {{number_format($total_geral, 2,',','.')}}</h5>
                             </div>
                             <div id="collapseOne3" class="collapse show" data-parent="#accordion-two">
                                 <div class="card-body">
@@ -130,20 +132,26 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     {{Form::label('nome', "Nome do Cliente")}}
-                                                    {{Form::text('nome', null, ['class'=>"form-control", 'placeholder'=>"Nome do cliente"])}}
+                                                    {{Form::text('nome', $getVenda->cliente->pessoa->nome, ['class'=>"form-control", 'placeholder'=>"Nome do cliente"])}}
                                                 </div>
                                             </div>
 
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     {{Form::label('telefone', "Telefone")}}
-                                                    {{Form::number('telefone', null, ['class'=>"form-control", 'placeholder'=>"Nº de Telefone"])}}
+                                                    {{Form::number('telefone', $getVenda->cliente->pessoa->telefone, ['class'=>"form-control", 'placeholder'=>"Nº de Telefone"])}}
                                                 </div>
                                             </div>
 
+                                        </div>
+
+                                        <div class="row">
+
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    {{Form::submit("Imprimir", ['class'=>"btn btn-primary"])}}
+                                                    <a href="/vendas/carrinho/fatura/{{$getVenda->id}}" class="btn btn-primary">
+                                                        Imprimir Factura
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>

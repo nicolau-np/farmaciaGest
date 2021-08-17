@@ -164,6 +164,7 @@ class VendaController extends Controller
             'type' => "vendas",
             'config' => null,
             'getItem_vendas' => $item_vendas,
+            'getVenda'=>$venda
         ];
         return view('vendas.carrinho', $data);
     }
