@@ -309,7 +309,7 @@ class VendaController extends Controller
 
         if(Produto::find($item_venda->id_produto)->increment('quantidade', $item_venda->quantidade)){
             if(ItemVenda::find($item_venda->id)->delete()){
-                
+                return back()->with(['success'=>"Produto eliminado do carrinho"]);
             }
         }
     }
