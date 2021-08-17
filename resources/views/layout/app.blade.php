@@ -1,6 +1,9 @@
 <?php
 use App\Http\Controllers\StaticController;
+if($type!="login"){
+
 $getVenda = StaticController::getVendasOn();
+}
 ?>
 <!DOCTYPE html>
 <html class="@if($type=="login") h-100 @endif" lang="en">
