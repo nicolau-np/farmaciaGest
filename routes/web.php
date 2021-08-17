@@ -37,7 +37,7 @@ Route::resource('/fabricantes', "FabricanteController");
 
 Route::resource('/fornecedores', "FornecedorController");
 
-Route::group(['prefix' =>"/estatistica"], function(){
+Route::group(['prefix' =>"/estatistica", 'middleware'=>"admin"], function(){
     Route::get('/produtos', "ProdutoController@estatistica");
     Route::get('/funcionarios', "FuncionarioController@estatistica");
 });

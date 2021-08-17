@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Hash;
 
 class FuncionarioController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -259,7 +263,7 @@ class FuncionarioController extends Controller
         if(User::where(['id_pessoa'=>$pessoa->id])->first()){
             return back()->with(['error'=>"Já possui uma conta de usuario"]);
         }
-        
+
         if(User::create($data)){
             return back()->with(['success'=>"Feito com sucesso"]);
         }

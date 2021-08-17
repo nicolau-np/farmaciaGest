@@ -105,6 +105,7 @@
                 <th>Descrição</th>
                 <th>P. Unitário</th>
                 <th>Quant.</th>
+                <th>Data de Caducidade</th>
                 <th>Estado</th>
             </tr>
         </thead>
@@ -120,6 +121,7 @@
              <td>{{$produtos->descricao}}</td>
              <td>{{number_format($produtos->valor_venda,2,',','.')}}</td>
              <td>{{$produtos->quantidade}}</td>
+             <td>{{date('d-m-Y', strtotime($produtos->data_caducidade))}}</td>
              <td>{{$produtos->estado}}</td>
             </tr>
         <?php }
