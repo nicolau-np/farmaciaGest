@@ -22,7 +22,7 @@
                     <div class="alert bg-info" style="color:white" role="alert"><em class="fa fa-lg fa-check">&nbsp;</em> {{session('info')}} <a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
                     @endif
 
-                    {{Form::open(['url' =>"/func/store_user", 'method'=>"post", 'enctype'=>"multipart/form-data"])}}
+                    {{Form::open(['url' =>"/func/store_user/{$getPessoa->id}", 'method'=>"put", 'enctype'=>"multipart/form-data"])}}
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
@@ -34,7 +34,17 @@
                             </div>
                         </div>
 
-                      
+                        <div class="col-md-3">
+                            {{Form::label('estado', "Estado")}} <span class="text-danger">*</span>
+                            {{Form::select('estado', [
+                                'on' =>"on",
+                                'off'=>"off",
+                            ], null, ['class'=>"form-control", 'placeholder'=>"Estado"])}}
+                            @if($errors->has('estado'))
+                                <span class="text-danger">{{$errors->first('estado')}}</span>
+                            @endif
+                        </div>
+
                     </div>
 
                     <div class="row">
