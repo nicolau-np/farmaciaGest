@@ -326,6 +326,9 @@ class VendaController extends Controller
             'getVenda'=>$venda,
         ];
         $pdf = PDF::loadView('report.fatura', $data);
-        return $pdf->stream('orcamento -' . date('Y') . '.pdf');
+        if(Venda::find($id_venda)->update(['estado'=>"off"])){
+            return $pdf->stream('orcamento -' . date('Y') . '.pdf');
+        }
+
     }
 }

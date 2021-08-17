@@ -1,3 +1,7 @@
+<?php
+use App\Http\Controllers\StaticController;
+$getVenda = StaticController::getVendasOn();
+?>
 <!DOCTYPE html>
 <html class="@if($type=="login") h-100 @endif" lang="en">
 
@@ -329,7 +333,7 @@
         </a>
 
         <a href="/vendas/" class="chat-btn">
-            <i class="fa fa-shopping-cart fa-2x animate-zoom"></i> <span class="text-chat">(0)</span>
+            <i class="fa fa-shopping-cart fa-2x animate-zoom"></i> <span class="text-chat">({{$getVenda->count()}})</span>
         </a>
 
         <!--**********************************
