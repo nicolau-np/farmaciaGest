@@ -209,4 +209,15 @@ class ProdutoController extends Controller
 
 
     }
+
+    public function estatistica(){
+        $data = [
+            'title' => "Estatísticas",
+            'menu' => "Produtos",
+            'submenu' => "Estatística",
+            'type' => "grafico",
+            'config' => null,
+        ];
+        return view('graficos.produtos', $data);
+    }
 }
