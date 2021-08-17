@@ -28,7 +28,7 @@
                             <span style="font-weight:bold;">Nome Funcionario:</span> {{$getFuncionario->pessoa->nome}}
                         </div>
                         <br/>
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <div class="form-group">
                                 {{Form::label('email', "E-mail")}} <span class="text-danger">*</span>
                                 {{Form::text('email', null, ['class'=>"form-control", 'placeholder'=>"E-mail"])}}

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Funcionario;
 use App\Pessoa;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class FuncionarioController extends Controller
 {
@@ -215,9 +217,10 @@ class FuncionarioController extends Controller
         }
     }
 
-    public function create_user($id_funcionario){
+    public function create_user($id_funcionario)
+    {
         $funcionario = Funcionario::find($id_funcionario);
-        if(!$funcionario){
+        if (!$funcionario) {
             return back()->with(['error' => "Nao encontrou"]);
         }
         $data = [
@@ -226,18 +229,35 @@ class FuncionarioController extends Controller
             'submenu' => "User",
             'type' => "Funcionarios",
             'config' => null,
-            'getFuncionario' =>$funcionario,
+            'getFuncionario' => $funcionario,
         ];
 
         return view('funcionarios.create_user', $data);
     }
 
-    public function store_user($id_pessoa){
+    public function store_user(Request $request, $id_pessoa)
+    {
         $pessoa = Pessoa::find($id_pessoa);
-        if(!$pessoa){
+        if (!$pessoa) {
             return back()->with(['error' => "Nao encontrou"]);
         }
+        $request->validate(
+            [
+                'email'=> ['required', 'email', 'unique:usuarios,email'],
+                'estado' => ['required', 'string', 'min:2'],
+            ]
+        );
+        $password = Hash::make('farmGest2021');
+        $data = [
+            'id_pessoa'=>$pessoa->id,
+            'email'=>$request->email,
+            'password'=>$password,
+            'acesso'=>"user",
+            'estado'=>$request->estado,
+        ];
 
-        
+        if(User::create($data)){
+            return back()->with(['success'=>"Feito com sucesso"]);
+        }
     }
 }
