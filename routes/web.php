@@ -29,6 +29,7 @@ Route::resource('/funcionarios', "FuncionarioController");
 Route::resource('/clientes', "ClienteController");
 
 Route::resource('/produtos', "ProdutoController");
+Route::get('/produtos/inventario', "ProdutoController@inventario");
 
 Route::resource('/fabricantes', "FabricanteController");
 

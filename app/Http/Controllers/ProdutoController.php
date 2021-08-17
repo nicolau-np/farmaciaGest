@@ -194,4 +194,8 @@ class ProdutoController extends Controller
             return back()->with(['info' => "Eliminado com sucesso"]);
         }
     }
+
+    public function inventario(){
+        
+    }
 }
