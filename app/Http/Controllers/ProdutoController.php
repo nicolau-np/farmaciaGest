@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Fabricante;
 use App\Fornecedor;
 use App\Produto;
+use PDF;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
@@ -71,21 +72,21 @@ class ProdutoController extends Controller
         ]);
 
         $data = [
-            'id_fabricante'=>$request->fabricante,
-            'id_fornecedor'=>$request->fornecedor,
-            'nome'=>$request->nome,
-            'categoria'=>$request->categoria,
-            'valor_compra'=>null,
-            'valor_venda'=>$request->preco,
-            'quantidade'=>$request->quantidade,
-            'data_emissao'=>$request->data_emissao,
-            'data_caducidade'=>$request->data_caducidade,
-            'descricao'=>$request->descricao,
-            'estado'=>$request->estado,
+            'id_fabricante' => $request->fabricante,
+            'id_fornecedor' => $request->fornecedor,
+            'nome' => $request->nome,
+            'categoria' => $request->categoria,
+            'valor_compra' => null,
+            'valor_venda' => $request->preco,
+            'quantidade' => $request->quantidade,
+            'data_emissao' => $request->data_emissao,
+            'data_caducidade' => $request->data_caducidade,
+            'descricao' => $request->descricao,
+            'estado' => $request->estado,
         ];
 
-        if(Produto::create($data)){
-            return back()->with(['success'=>"Feito com sucesso"]);
+        if (Produto::create($data)) {
+            return back()->with(['success' => "Feito com sucesso"]);
         }
     }
 
@@ -109,8 +110,8 @@ class ProdutoController extends Controller
     public function edit($id)
     {
         $produto = Produto::find($id);
-        if(!$produto){
-            return back()->with(['info'=>"Não encontrou"]);
+        if (!$produto) {
+            return back()->with(['info' => "Não encontrou"]);
         }
 
         $fornecedores = Fornecedor::pluck('nome', 'id');
@@ -123,7 +124,7 @@ class ProdutoController extends Controller
             'config' => null,
             'getFabricantes' => $fabricantes,
             'getFornecedores' => $fornecedores,
-            'getProduto'=>$produto,
+            'getProduto' => $produto,
         ];
         return view('produtos.edit', $data);
     }
@@ -138,8 +139,8 @@ class ProdutoController extends Controller
     public function update(Request $request, $id)
     {
         $produtos = Produto::find($id);
-        if(!$produtos){
-            return back()->with(['info'=>"Não encontrou"]);
+        if (!$produtos) {
+            return back()->with(['info' => "Não encontrou"]);
         }
         $request->validate([
             'nome' => ['required', 'string', 'min:4', 'max:255'],
@@ -155,21 +156,21 @@ class ProdutoController extends Controller
         ]);
 
         $data = [
-            'id_fabricante'=>$request->fabricante,
-            'id_fornecedor'=>$request->fornecedor,
-            'nome'=>$request->nome,
-            'categoria'=>$request->categoria,
-            'valor_compra'=>null,
-            'valor_venda'=>$request->preco,
-            'quantidade'=>$request->quantidade,
-            'data_emissao'=>$request->data_emissao,
-            'data_caducidade'=>$request->data_caducidade,
-            'descricao'=>$request->descricao,
-            'estado'=>$request->estado,
+            'id_fabricante' => $request->fabricante,
+            'id_fornecedor' => $request->fornecedor,
+            'nome' => $request->nome,
+            'categoria' => $request->categoria,
+            'valor_compra' => null,
+            'valor_venda' => $request->preco,
+            'quantidade' => $request->quantidade,
+            'data_emissao' => $request->data_emissao,
+            'data_caducidade' => $request->data_caducidade,
+            'descricao' => $request->descricao,
+            'estado' => $request->estado,
         ];
 
-        if(Produto::find($id)->update($data)){
-            return back()->with(['success'=>"Feito com sucesso"]);
+        if (Produto::find($id)->update($data)) {
+            return back()->with(['success' => "Feito com sucesso"]);
         }
     }
 
@@ -195,7 +196,15 @@ class ProdutoController extends Controller
         }
     }
 
-    public function inventario(){
-        
+    public function inventario()
+    {
+        $produtos = Produto::where('estado','!=','delete')->get();
+        $data = [
+            'title' => "Inventario dos produtos",
+            'getProdutos' => $produtos,
+        ];
+        $pdf = PDF::loadView('report.inventario', $data);
+
+        return $pdf->stream('Inventario -' . date('Y') . '.pdf');
     }
 }
