@@ -1,3 +1,7 @@
+<?php
+use App\Http\Controllers\StaticController;
+$getProdutos = StaticController::getProdutos();
+?>
 @extends('layout.app')
 @section('content')
 <div class="row">
@@ -39,13 +43,16 @@
                             zMin: 0,
                             name: 'produts',
                             data: [
+                            <?php
+                                foreach($getProdutos as $produtos){
+                            ?>
 
                             {
-                                name: 'Spain',
+                                name: "{{$produtos->}}",
                                 y: 505370,
                                 z: 92.9
                             },
-                            
+                            <?php } ?>
                                 ]
                         }]
                     });
