@@ -256,6 +256,10 @@ class FuncionarioController extends Controller
             'estado'=>$request->estado,
         ];
 
+        if(User::where(['id_pessoa'=>$pessoa->id])->first()){
+            return back()->with(['error'=>"Já possui uma conta de usuario"]);
+        }
+        
         if(User::create($data)){
             return back()->with(['success'=>"Feito com sucesso"]);
         }
