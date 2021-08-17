@@ -214,4 +214,16 @@ class FuncionarioController extends Controller
             return back()->with(['info' => "Eliminado com sucesso"]);
         }
     }
+
+    public function create_user(){
+        $data = [
+            'title' => "Funcionarios",
+            'menu' => "Funcionarios",
+            'submenu' => "User",
+            'type' => "Funcionarios",
+            'config' => null,
+        ];
+
+        return view('funcionarios.create_user', $data);
+    }
 }

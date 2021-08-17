@@ -25,6 +25,7 @@ Route::group(['prefix'=>"user"], function(){
 Route::get('/', "HomeController@index")->middleware('auth')->name('home');
 
 Route::resource('/funcionarios', "FuncionarioController");
+Route::get('/func/add/{id_funcionario}', "FuncionarioController@create_user");
 
 Route::resource('/clientes', "ClienteController");
 
