@@ -24,11 +24,22 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($getFuncionarios as $funcionarios)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                            <td>{{$funcionarios->pessoa->nome}}</td>
+                            <td>{{$funcionarios->venda->count()}}</td>
+                                <td>
+                                    <?php
+                                    $total_geral = 0;
+                                        foreach($funcionarios->venda as $vendas){
+                                            $total_geral = $total_geral + $vendas->valor_total;
+                                        }
+                                        ?>
+                                        {{number_format($total_geral,2,',','.')}}
+                                </td>
                             </tr>
+
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

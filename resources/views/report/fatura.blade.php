@@ -58,11 +58,11 @@
     width: 28.3%;
 }
 .dados_cliente{
-    color:aqua;
+    color:rgb(0, 17, 255);
     font-weight: bold;
 }
 .total_geral{
-    color:aqua;
+    color:rgb(0, 17, 255);
     font-weight: bold;
     font-size: 15px;
 

@@ -270,12 +270,17 @@ class FuncionarioController extends Controller
     }
 
     public function estatistica(){
+        $data=[];
+        $funcionarios = Funcionario::whereHas('venda', function($query) use($data){
+            $query->where(['estado'=>"off"]);
+        })->get();
         $data = [
             'title' => "Estatísticas",
             'menu' => "Funcionários",
             'submenu' => "Estatística",
             'type' => "grafico",
             'config' => null,
+            'getFuncionarios'=>$funcionarios,
         ];
         return view('graficos.funcionario', $data);
     }
