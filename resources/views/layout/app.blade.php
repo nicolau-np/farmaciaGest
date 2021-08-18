@@ -13,7 +13,7 @@ if($type!="login"){
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>{{$title}}</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://upload.wikimedia.org/wikipedia/commons/2/21/Sigl%C4%83farmacii.png">
     @if($type!="login")
     <!-- Pignose Calender -->
     <link href="{{asset('assets/plugins/pg-calendar/css/pignose.calendar.min.css')}}" rel="stylesheet">

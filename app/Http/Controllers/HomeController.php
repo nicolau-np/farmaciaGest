@@ -15,7 +15,7 @@ class HomeController extends Controller
         $funcionarios = Funcionario::where(['estado'=>"on"])->get();
         $clientes = Cliente::where(['estado'=>"on"])->get();
         $data = [
-            'title' => "farmaciaGest",
+            'title' => "ABD FARMÁCIA",
             'menu' => "Home",
             'submenu' => null,
             'type' => "home",
