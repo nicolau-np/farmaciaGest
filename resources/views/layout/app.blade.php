@@ -69,7 +69,7 @@ if($type!="login"){
                     </b>
                     <span class="logo-compact"><img src="{{asset('assets/images/logo-compact.png')}}" alt=""></span>
                     <span class="brand-title" style="color:#fff; font-weight:bold; font-size:20px;">
-                        ADB FARMÁCIA
+                        ABD FARMÁCIA
                     </span>
                 </a>
             </div>
