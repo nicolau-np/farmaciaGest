@@ -14,7 +14,7 @@ $getProdutos = StaticController::getProdutosVendidos();
 
                 </div>
                 <br/>
-                <div class="form">
+                <div class="grafico">
 
                     <figure class="highcharts-figure">
                         <div id="container"></div>

@@ -268,4 +268,15 @@ class FuncionarioController extends Controller
             return back()->with(['success'=>"Feito com sucesso"]);
         }
     }
+
+    public function estatistica(){
+        $data = [
+            'title' => "Estatísticas",
+            'menu' => "Funcionários",
+            'submenu' => "Estatística",
+            'type' => "grafico",
+            'config' => null,
+        ];
+        return view('graficos.funcionario', $data);
+    }
 }
