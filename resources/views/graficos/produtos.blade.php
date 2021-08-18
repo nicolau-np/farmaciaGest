@@ -1,13 +1,7 @@
 <?php
 use App\Http\Controllers\StaticController;
 $getProdutos = StaticController::getProdutosVendidos();
-$getItemVendaProduto = StaticController::getItemVendaProduto(1);
 
-foreach($getItemVendaProduto as $item_venda){
-    echo "ID:".$item_venda->id."<br/>";
-}
-
-echo "hello<br/>";
 ?>
 @extends('layout.app')
 @section('content')
@@ -41,8 +35,8 @@ echo "hello<br/>";
                         tooltip: {
                             headerFormat: '',
                             pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {point.name}</b><br/>' +
-                                'Area (square km): <b>{point.y}</b><br/>' +
-                                'Population density (people per square km): <b>{point.z}</b><br/>'
+                                'Quantidades: <b>{point.y}</b><br/>' +
+                                'Valores (Akz): <b>{point.z}</b><br/>'
                         },
                         series: [{
                             minPointSize: 10,
@@ -52,11 +46,16 @@ echo "hello<br/>";
                             data: [
                             <?php
                                 foreach($getProdutos as $produtos){
-                            ?>
+                                    $getItemVendaProduto = StaticController::getItemVendaProduto($produtos->id);
+                                    $quantidade = 0;
+                                    foreach($getItemVendaProduto as $item_venda){
+                                    $quantidade = $quantidade + $item_venda->quantidade;
+                                    }
+                                ?>
 
                             {
                                 name: "{{$produtos->nome}} - {{$produtos->descricao}}",
-                                y: 505370,
+                                y: {{$quantidade}},
                                 z: 92.9
                             },
                             <?php } ?>
