@@ -61,6 +61,10 @@
                                     'Comprimidos'=>"Comprimidos",
                                     'Xapores'=>"Xaropes",
                                     'Pomadas'=>"Pomadas",
+                                    'Lapis'=>"Lapis",
+                                    'Pó'=>"Pó",
+                                    'Óleo'=>"Óleo",
+                                    'Outro'=>"Outro",
                                 ], null, ['class'=>"form-control", 'placeholder'=>"Categoria"])}}
                                 @if($errors->has('categoria'))
                                 <span class="text-danger">{{$errors->first('categoria')}}</span>
