@@ -321,12 +321,18 @@ class VendaController extends Controller
         if(!$venda){
             return back()->with(['error' => "Nao encontrou"]);
         }
+        $total_geral = 0;
+        $item_venda = ItemVenda::where(['id_venda' => $id_venda])->get();
+        foreach($item_venda as $item){
+            $total = ($item->quantidade * $item->preco_unitario);
+            $total_geral = $total_geral + $total;
+        }
         $data = [
             'title'=>$venda->cliente->pessoa->nome,
             'getVenda'=>$venda,
         ];
         $pdf = PDF::loadView('report.fatura', $data);
-        if(Venda::find($id_venda)->update(['estado'=>"off"])){
+        if(Venda::find($id_venda)->update(['estado'=>"off", 'valor_total'=>$total_geral])){
             return $pdf->stream('Fatura -' . date('Y') . '.pdf');
         }
 

@@ -48,15 +48,17 @@ $getProdutos = StaticController::getProdutosVendidos();
                                 foreach($getProdutos as $produtos){
                                     $getItemVendaProduto = StaticController::getItemVendaProduto($produtos->id);
                                     $quantidade = 0;
+                                    $total_geral = 0;
                                     foreach($getItemVendaProduto as $item_venda){
                                     $quantidade = $quantidade + $item_venda->quantidade;
                                     }
+                                    $total_geral = $quantidade * $produtos->valor_venda;
                                 ?>
 
                             {
                                 name: "{{$produtos->nome}} - {{$produtos->descricao}}",
                                 y: {{$quantidade}},
-                                z: 92.9
+                                z: {{$total_geral}}
                             },
                             <?php } ?>
                                 ]
