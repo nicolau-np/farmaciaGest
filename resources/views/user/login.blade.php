@@ -7,7 +7,7 @@
                     <div class="form-input-content">
                         <div class="card login-form mb-0">
                             <div class="card-body pt-5">
-                                <a class="text-center" href="index.html"> <h4>farmaciaGest</h4></a>
+                                <a class="text-center" href="index.html"> <h4>ABD FARMÁCIA</h4></a>
 
                                 @if (session('error'))
                                 <div class="alert bg-danger" style="color:white" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em> {{__(session('error'))}} <a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>

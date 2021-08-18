@@ -64,12 +64,12 @@ if($type!="login"){
         <div class="nav-header">
             <div class="brand-logo">
                 <a href="/">
-                    <b class="logo-abbr" style="color:#fff; font-weight:bold; font-size:30px;">
-                        fG
+                    <b class="logo-abbr" style="color:#fff; font-weight:bold; font-size:9px;">
+                        ABD FARMÁCIA
                     </b>
                     <span class="logo-compact"><img src="{{asset('assets/images/logo-compact.png')}}" alt=""></span>
-                    <span class="brand-title" style="color:#fff; font-weight:bold; font-size:30px;">
-                        farmaciaGest
+                    <span class="brand-title" style="color:#fff; font-weight:bold; font-size:20px;">
+                        ADB FARMÁCIA
                     </span>
                 </a>
             </div>
