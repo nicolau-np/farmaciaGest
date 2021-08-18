@@ -64,6 +64,7 @@
                                     'Lapis'=>"Lapis",
                                     'Pó'=>"Pó",
                                     'Óleo'=>"Óleo",
+                                    'Creme'=>"Creme",
                                     'Outro'=>"Outro",
                                 ], $getProduto->categoria, ['class'=>"form-control", 'placeholder'=>"Categoria"])}}
                                 @if($errors->has('categoria'))
