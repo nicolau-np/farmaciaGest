@@ -31,9 +31,9 @@ class StaticController extends Controller
         $data = [
             'id_produto' => $id_produto,
         ];
-        $item_venda = ItemVenda::whereHas('venda', function ($query) use ($data) {
-            $query->where(['estado' => "on"]);
-        })->where(['id_produto' => $data['id_produto']]);
+        $item_venda = ItemVenda::whereHas('venda', function($query) use ($data){
+            $query->where(['estado'=>"off"]);
+        })->where(['id_produto' => $data['id_produto']])->get();
 
         return $item_venda;
     }

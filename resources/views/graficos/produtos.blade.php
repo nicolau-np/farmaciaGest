@@ -3,11 +3,11 @@ use App\Http\Controllers\StaticController;
 $getProdutos = StaticController::getProdutosVendidos();
 $getItemVendaProduto = StaticController::getItemVendaProduto(1);
 
-/*foreach($getItemVendaProduto as $item_venda){
-    echo "ID:".$item_venda;
-}*/
+foreach($getItemVendaProduto as $item_venda){
+    echo "ID:".$item_venda->id."<br/>";
+}
 
-echo "hello";
+echo "hello<br/>";
 ?>
 @extends('layout.app')
 @section('content')
