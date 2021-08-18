@@ -1,6 +1,13 @@
 <?php
 use App\Http\Controllers\StaticController;
-$getProdutos = StaticController::getProdutos();
+$getProdutos = StaticController::getProdutosVendidos();
+$getItemVendaProduto = StaticController::getItemVendaProduto(1);
+
+/*foreach($getItemVendaProduto as $item_venda){
+    echo "ID:".$item_venda;
+}*/
+
+echo "hello";
 ?>
 @extends('layout.app')
 @section('content')
@@ -48,7 +55,7 @@ $getProdutos = StaticController::getProdutos();
                             ?>
 
                             {
-                                name: "{{$produtos->}}",
+                                name: "{{$produtos->nome}} - {{$produtos->descricao}}",
                                 y: 505370,
                                 z: 92.9
                             },
