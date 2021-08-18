@@ -77,7 +77,7 @@
 
     <div class="cabecalho">
         <span class="logo">
-        <img src="https://img2.gratispng.com/20180331/yzq/kisspng-pharmacy-logo-pharmacist-pharmaceutical-drug-pharmacy-5abf3058c52fd8.1225652515224791928077.jpg" alt="">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Sigl%C4%83farmacii.png" style="height:90px; width:90px;" alt="">
         </span>
         <span class="texto">
         ABD FARMÁCIA<br/>
